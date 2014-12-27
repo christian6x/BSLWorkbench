@@ -37,45 +37,47 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "    Homepage. 
+        echo "
             <div>
             ";
         // line 6
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 7
-            echo "                ";
+            echo "                Homepage.
+                ";
+            // line 8
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo " |
                 <a href=\"";
-            // line 8
+            // line 9
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">
                     ";
-            // line 9
+            // line 10
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
             echo "
                 </a>
             ";
         } else {
-            // line 12
+            // line 13
             echo "                <a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
             echo "</a>
                 <a href=\"";
-            // line 13
+            // line 14
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
             echo "</a>
             ";
         }
-        // line 15
+        // line 16
         echo "        </div>
     
      ";
-        // line 17
+        // line 18
         $this->displayBlock('fos_user_content', $context, $blocks);
     }
 
@@ -95,6 +97,6 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
 
     public function getDebugInfo()
     {
-        return array (  79 => 17,  75 => 15,  68 => 13,  61 => 12,  55 => 9,  51 => 8,  46 => 7,  44 => 6,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  81 => 18,  77 => 16,  70 => 14,  63 => 13,  57 => 10,  53 => 9,  49 => 8,  46 => 7,  44 => 6,  40 => 4,  37 => 3,  11 => 1,);
     }
 }

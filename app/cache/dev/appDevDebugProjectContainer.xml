@@ -4,7 +4,7 @@
     <parameter key="kernel.root_dir">C:/wamp/www/BSLWorkbench/app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
-    <parameter key="kernel.name">app</parameter>
+    <parameter key="kernel.name">ap_</parameter>
     <parameter key="kernel.cache_dir">C:/wamp/www/BSLWorkbench/app/cache/dev</parameter>
     <parameter key="kernel.logs_dir">C:/wamp/www/BSLWorkbench/app/logs</parameter>
     <parameter key="kernel.bundles" type="collection">
@@ -19,6 +19,7 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="BraincraftedBootstrapBundle">Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -325,6 +326,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>BraincraftedBootstrapBundle:Form:bootstrap.html.twig</parameter>
     </parameter>
     <parameter key="debug.templating.engine.twig.class">Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine</parameter>
     <parameter key="twig.options" type="collection">
@@ -333,6 +335,7 @@
       <parameter key="exception_controller">twig.controller.exception:showAction</parameter>
       <parameter key="form_themes" type="collection">
         <parameter>form_div_layout.html.twig</parameter>
+        <parameter>BraincraftedBootstrapBundle:Form:bootstrap.html.twig</parameter>
       </parameter>
       <parameter key="autoescape_service">null</parameter>
       <parameter key="autoescape_service_method">null</parameter>
@@ -460,6 +463,11 @@
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
+    <parameter key="assetic.filter.lessphp.class">Assetic\Filter\LessphpFilter</parameter>
+    <parameter key="assetic.filter.lessphp.presets" type="collection"/>
+    <parameter key="assetic.filter.lessphp.paths" type="collection"/>
+    <parameter key="assetic.filter.lessphp.formatter">null</parameter>
+    <parameter key="assetic.filter.lessphp.preserve_comments">null</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
     <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>
     <parameter key="assetic.routing_loader.class">Symfony\Bundle\AsseticBundle\Routing\AsseticLoader</parameter>
@@ -615,6 +623,31 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="braincrafted_bootstrap.form.type.collection.class">Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType</parameter>
+    <parameter key="braincrafted_bootstrap.form.type.money.class">Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType</parameter>
+    <parameter key="braincrafted_bootstrap.form.type.form_actions.class">Braincrafted\Bundle\BootstrapBundle\Form\Type\FormActionsType</parameter>
+    <parameter key="braincrafted_bootstrap.form.type.form_static_control.class">Braincrafted\Bundle\BootstrapBundle\Form\Type\FormStaticControlType</parameter>
+    <parameter key="braincrafted_bootstrap.form.extension.typesetter_extension.class">Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension</parameter>
+    <parameter key="braincrafted_bootstrap.form.extension.button_extension.class">Braincrafted\Bundle\BootstrapBundle\Form\Extension\ButtonTypeExtension</parameter>
+    <parameter key="braincrafted_bootstrap.form.extension.static_control.class">Braincrafted\Bundle\BootstrapBundle\Form\Extension\StaticControlExtension</parameter>
+    <parameter key="braincrafted_bootstrap.form.extension.input_group_button.class">Braincrafted\Bundle\BootstrapBundle\Form\Extension\InputGroupButtonExtension</parameter>
+    <parameter key="braincrafted_bootstrap.twig.icon_extension.class">Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension</parameter>
+    <parameter key="braincrafted_bootstrap.twig.label_extension.class">Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension</parameter>
+    <parameter key="braincrafted_bootstrap.twig.badge_extension.class">Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension</parameter>
+    <parameter key="braincrafted_bootstrap.twig.form_extension.class">Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension</parameter>
+    <parameter key="braincrafted_bootstrap.icon_prefix">glyphicon</parameter>
+    <parameter key="braincrafted_bootstrap.flash.class">Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage</parameter>
+    <parameter key="braincrafted_bootstrap.customize" type="collection">
+      <parameter key="variables_file">null</parameter>
+      <parameter key="bootstrap_output">C:/wamp/www/BSLWorkbench/app/Resources/less/bootstrap.less</parameter>
+      <parameter key="bootstrap_template">BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig</parameter>
+    </parameter>
+    <parameter key="braincrafted_bootstrap.assets_dir">C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap</parameter>
+    <parameter key="braincrafted_bootstrap.fontawesome_dir">C:/wamp/www/BSLWorkbench/app/../vendor/fortawesome/font-awesome</parameter>
+    <parameter key="braincrafted_bootstrap.fonts_dir">C:/wamp/www/BSLWorkbench/app/../web/fonts</parameter>
+    <parameter key="braincrafted_bootstrap.output_dir">null</parameter>
+    <parameter key="braincrafted_bootstrap.less_filter">lessphp</parameter>
+    <parameter key="braincrafted_bootstrap.icon_tag">span</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -2277,7 +2310,7 @@
               <argument key="integer">form.type.integer</argument>
               <argument key="language">form.type.language</argument>
               <argument key="locale">form.type.locale</argument>
-              <argument key="money">form.type.money</argument>
+              <argument key="money">braincrafted_bootstrap.form.type.money</argument>
               <argument key="number">form.type.number</argument>
               <argument key="password">form.type.password</argument>
               <argument key="percent">form.type.percent</argument>
@@ -2299,6 +2332,9 @@
               <argument key="fos_user_registration">fos_user.registration.form.type</argument>
               <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
+              <argument key="bootstrap_collection">braincrafted_bootstrap.form.type.collection</argument>
+              <argument key="form_actions">braincrafted_bootstrap.form.type.form_actions</argument>
+              <argument key="bs_static">braincrafted_bootstrap.form.type.form_control_static</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -2306,12 +2342,20 @@
                 <argument>form.type_extension.form.validator</argument>
                 <argument>form.type_extension.csrf</argument>
                 <argument>form.type_extension.form.data_collector</argument>
+                <argument>braincrafted_bootstrap.form.extension.typesetter_extension</argument>
+                <argument>braincrafted_bootstrap.form.extension.static_control</argument>
               </argument>
               <argument key="repeated" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
               </argument>
               <argument key="submit" type="collection">
                 <argument>form.type_extension.submit.validator</argument>
+              </argument>
+              <argument key="button" type="collection">
+                <argument>braincrafted_bootstrap.form.extension.form_action_button</argument>
+              </argument>
+              <argument key="text" type="collection">
+                <argument>braincrafted_bootstrap.form.extension.input_group_button</argument>
               </argument>
             </argument>
             <argument type="collection">
@@ -3043,7 +3087,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>549efa092af35</argument>
+            <argument>549f00255e894</argument>
           </service>
         </argument>
       </argument>
@@ -3322,7 +3366,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>549efa092af35</argument>
+            <argument>549f00255e894</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3422,6 +3466,7 @@
         <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
+          <argument>BraincraftedBootstrapBundle:Form:bootstrap.html.twig</argument>
         </argument>
         <argument key="autoescape_service">null</argument>
         <argument key="autoescape_service_method">null</argument>
@@ -3529,6 +3574,7 @@
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
                       <argument>form_div_layout.html.twig</argument>
+                      <argument>BraincraftedBootstrapBundle:Form:bootstrap.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -3569,6 +3615,18 @@
             <tag name="twig.extension"/>
           </service>
         </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="braincrafted_bootstrap.twig.icon_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="braincrafted_bootstrap.twig.label_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="braincrafted_bootstrap.twig.badge_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="braincrafted_bootstrap.twig.form_extension"/>
       </call>
       <call method="addExtension">
         <argument type="service">
@@ -3656,11 +3714,17 @@
       <argument type="service" id="service_container"/>
       <argument type="collection">
         <argument key="cssrewrite">assetic.filter.cssrewrite</argument>
+        <argument key="lessphp">assetic.filter.lessphp</argument>
       </argument>
     </service>
     <service id="assetic.asset_manager" class="Assetic\Factory\LazyAssetManager">
       <argument type="service" id="assetic.asset_factory"/>
       <argument type="collection">
+        <argument key="config" type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader" public="false">
+            <tag name="assetic.formula_loader" alias="config"/>
+          </service>
+        </argument>
         <argument key="twig" type="service">
           <service class="Assetic\Factory\Loader\CachedFormulaLoader" public="false">
             <tag name="assetic.formula_loader" alias="twig"/>
@@ -3682,6 +3746,58 @@
           </service>
         </argument>
       </argument>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource" public="false">
+            <tag name="assetic.formula_resource" loader="config"/>
+            <argument type="collection">
+              <argument key="bootstrap_css" type="collection">
+                <argument type="collection">
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/less/bootstrap.less</argument>
+                  <argument>C:\wamp\www\BSLWorkbench\vendor\braincrafted\bootstrap-bundle\Braincrafted\Bundle\BootstrapBundle\DependencyInjection/../Resources/less/form.less</argument>
+                </argument>
+                <argument type="collection">
+                  <argument>lessphp</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="output">css/bootstrap.css</argument>
+                </argument>
+              </argument>
+              <argument key="bootstrap_js" type="collection">
+                <argument type="collection">
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/transition.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/alert.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/button.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/carousel.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/collapse.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/dropdown.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/modal.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/tooltip.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/popover.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/scrollspy.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/tab.js</argument>
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/affix.js</argument>
+                  <argument>C:\wamp\www\BSLWorkbench\vendor\braincrafted\bootstrap-bundle\Braincrafted\Bundle\BootstrapBundle\DependencyInjection/../Resources/js/bc-bootstrap-collection.js</argument>
+                </argument>
+                <argument type="collection"/>
+                <argument type="collection">
+                  <argument key="output">js/bootstrap.js</argument>
+                </argument>
+              </argument>
+              <argument key="jquery" type="collection">
+                <argument type="collection">
+                  <argument>C:/wamp/www/BSLWorkbench/app/../vendor/jquery/jquery/jquery-1.11.1.js</argument>
+                </argument>
+                <argument type="collection"/>
+                <argument type="collection">
+                  <argument key="output">js/jquery.js</argument>
+                </argument>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>config</argument>
+      </call>
       <call method="addResource">
         <argument type="service">
           <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
@@ -3706,6 +3822,15 @@
       <argument>true</argument>
       <call method="addWorker">
         <argument type="service">
+          <service class="Assetic\Factory\Worker\EnsureFilterWorker" public="false">
+            <tag name="assetic.factory_worker"/>
+            <argument>/\.less$/</argument>
+            <argument type="service" id="assetic.filter.lessphp"/>
+          </service>
+        </argument>
+      </call>
+      <call method="addWorker">
+        <argument type="service">
           <service class="Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker" public="false">
             <tag name="assetic.factory_worker"/>
           </service>
@@ -3714,6 +3839,22 @@
     </service>
     <service id="assetic.filter.cssrewrite" class="Assetic\Filter\CssRewriteFilter">
       <tag name="assetic.filter" alias="cssrewrite"/>
+    </service>
+    <service id="assetic.filter.lessphp" class="Assetic\Filter\LessphpFilter">
+      <tag name="assetic.filter" alias="lessphp"/>
+      <file>C:/wamp/www/BSLWorkbench/app/../vendor/oyejorge/less.php/lessc.inc.php</file>
+      <call method="setPresets">
+        <argument type="collection"/>
+      </call>
+      <call method="setLoadPaths">
+        <argument type="collection"/>
+      </call>
+      <call method="setFormatter">
+        <argument>null</argument>
+      </call>
+      <call method="setPreserveComments">
+        <argument>null</argument>
+      </call>
     </service>
     <service id="assetic.controller" class="Symfony\Bundle\AsseticBundle\Controller\AsseticController" scope="prototype">
       <argument type="service" id="request"/>
@@ -4041,6 +4182,47 @@
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="router"/>
       <argument>86400</argument>
+    </service>
+    <service id="braincrafted_bootstrap.form.type.collection" class="Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType">
+      <tag name="form.type" alias="bootstrap_collection"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.type.money" class="Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType">
+      <tag name="form.type" alias="money"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.type.form_actions" class="Braincrafted\Bundle\BootstrapBundle\Form\Type\FormActionsType">
+      <tag name="form.type" alias="form_actions"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.type.form_control_static" class="Braincrafted\Bundle\BootstrapBundle\Form\Type\FormStaticControlType">
+      <tag name="form.type" alias="bs_static"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.extension.typesetter_extension" class="Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension">
+      <tag name="form.type_extension" alias="form"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.extension.form_action_button" class="Braincrafted\Bundle\BootstrapBundle\Form\Extension\ButtonTypeExtension">
+      <tag name="form.type_extension" alias="button"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.extension.static_control" class="Braincrafted\Bundle\BootstrapBundle\Form\Extension\StaticControlExtension">
+      <tag name="form.type_extension" alias="form"/>
+    </service>
+    <service id="braincrafted_bootstrap.form.extension.input_group_button" class="Braincrafted\Bundle\BootstrapBundle\Form\Extension\InputGroupButtonExtension">
+      <tag name="form.type_extension" alias="text"/>
+    </service>
+    <service id="braincrafted_bootstrap.twig.icon_extension" class="Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension">
+      <tag name="twig.extension"/>
+      <argument>glyphicon</argument>
+      <argument>span</argument>
+    </service>
+    <service id="braincrafted_bootstrap.twig.label_extension" class="Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="braincrafted_bootstrap.twig.badge_extension" class="Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="braincrafted_bootstrap.twig.form_extension" class="Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="braincrafted_bootstrap.flash" class="Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage">
+      <argument type="service" id="session"/>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig"/>
@@ -4425,6 +4607,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\BSLWorkbench\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\BSLWorkbench\vendor\braincrafted\bootstrap-bundle\Braincrafted\Bundle\BootstrapBundle/Resources/views</argument>
+        <argument>BraincraftedBootstrap</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\BSLWorkbench\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
