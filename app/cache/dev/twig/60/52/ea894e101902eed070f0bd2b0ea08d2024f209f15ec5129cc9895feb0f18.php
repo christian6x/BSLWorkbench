@@ -63,7 +63,6 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
-            echo $this->env->getExtension('braincrafted_bootstrap_badge')->badgeFunction("42");
             echo "</a>
                 <a href=\"";
             // line 14
@@ -91,6 +90,6 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
 
     public function getDebugInfo()
     {
-        return array (  77 => 16,  70 => 14,  62 => 13,  56 => 10,  52 => 9,  48 => 8,  45 => 7,  43 => 6,  39 => 4,  36 => 3,  11 => 1,);
+        return array (  76 => 16,  69 => 14,  62 => 13,  56 => 10,  52 => 9,  48 => 8,  45 => 7,  43 => 6,  39 => 4,  36 => 3,  11 => 1,);
     }
 }

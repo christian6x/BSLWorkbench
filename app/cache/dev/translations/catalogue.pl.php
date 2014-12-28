@@ -121,6 +121,10 @@ $catalogue = new MessageCatalogue('pl', array (
     'Account is disabled.' => 'Konto jest wyłączone.',
     'Account is locked.' => 'Konto jest zablokowane.',
   ),
+  'messages' => 
+  array (
+    'submit.suggest' => 'Szukaj',
+  ),
   'FOSUserBundle' => 
   array (
     'group.edit.submit' => 'Edytuj grupę',

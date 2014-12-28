@@ -1,0 +1,6 @@
+com_homepage:
+    path:     /main/
+    defaults: { _controller: ComBundle:Default:index }
+com_ips_square_suggest:
+    path:     /ips-square-suggest/
+    defaults: { _controller: ComBundle:IpsSquareSuggest:render }

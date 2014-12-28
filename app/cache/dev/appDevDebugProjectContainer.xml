@@ -18,6 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
+      <parameter key="ComBundle">ComBundle\ComBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="BraincraftedBootstrapBundle">Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
@@ -1633,6 +1634,12 @@
       </call>
       <call method="addResource">
         <argument>yml</argument>
+        <argument>C:\wamp\www\BSLWorkbench\src\ComBundle/Resources/translations\messages.pl.yml</argument>
+        <argument>pl</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
         <argument>C:\wamp\www\BSLWorkbench\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ar.yml</argument>
         <argument>ar</argument>
         <argument>FOSUserBundle</argument>
@@ -3087,7 +3094,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>549fd15cd6859</argument>
+            <argument>549fe92380fed</argument>
           </service>
         </argument>
       </argument>
@@ -3366,7 +3373,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>549fd15cd6859</argument>
+            <argument>549fe92380fed</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4603,6 +4610,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\BSLWorkbench\src\AppBundle/Resources/views</argument>
         <argument>App</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\BSLWorkbench\src\ComBundle/Resources/views</argument>
+        <argument>Com</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\BSLWorkbench\vendor\friendsofsymfony\user-bundle/Resources/views</argument>

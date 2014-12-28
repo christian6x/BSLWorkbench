@@ -101,7 +101,9 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         // line 44
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 45
-            echo "                                    <li><a href=\"test\">Test</a></li>
+            echo "                                    <li><a href=\"";
+            echo $this->env->getExtension('routing')->getPath("com_homepage");
+            echo "\">Coms</a></li>
                                 ";
         }
         // line 47
@@ -158,19 +160,9 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     ";
         // line 71
         $this->displayBlock('top_c', $context, $blocks);
-        // line 72
-        echo "    <div class=\"top-c\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2\">
-                    <!-- Miejsce na treść po lewej -->
-                    
-                </div>
-                     <!-- Miejsce na treść po prawej -->
-            </div>
-        </div>
-    </div>
-    <input type=\"search\" /> 
+        // line 84
+        echo "
+    
 
     <!-- FOOTER -->
     <footer class=\"site-footer\">
@@ -184,37 +176,37 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     </footer> <!-- .site-footer -->
         
         ";
-        // line 96
+        // line 98
         $this->displayBlock('body', $context, $blocks);
-        // line 97
+        // line 99
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 98
+        // line 100
         echo "        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src=\"";
-        // line 99
+        // line 101
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src=\"";
-        // line 101
+        // line 103
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 102
+        // line 104
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/vendor/jquery-1.10.1.min.js"), "html", null, true);
         echo "\"></script>
         <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\\/script>')</script>
         <script src=\"";
-        // line 104
+        // line 106
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 105
+        // line 107
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 106
+        // line 108
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/templatemo_custom.js"), "html", null, true);
         echo "\"></script> 
     </body>
@@ -236,14 +228,27 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     // line 71
     public function block_top_c($context, array $blocks = array())
     {
+        // line 72
+        echo "        <div class=\"top-c\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2\">
+                    <!-- Miejsce na treść po lewej -->
+                    
+                </div>
+                     <!-- Miejsce na treść po prawej -->
+            </div>
+        </div>
+    </div>
+    ";
     }
 
-    // line 96
+    // line 98
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 97
+    // line 99
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -260,6 +265,6 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
 
     public function getDebugInfo()
     {
-        return array (  247 => 97,  242 => 96,  237 => 71,  232 => 59,  226 => 4,  218 => 106,  214 => 105,  210 => 104,  205 => 102,  201 => 101,  196 => 99,  193 => 98,  190 => 97,  188 => 96,  162 => 72,  160 => 71,  147 => 60,  145 => 59,  141 => 57,  134 => 56,  127 => 55,  117 => 53,  115 => 52,  108 => 47,  104 => 45,  102 => 44,  98 => 43,  89 => 37,  78 => 28,  76 => 27,  71 => 25,  67 => 24,  62 => 22,  56 => 19,  47 => 13,  41 => 10,  35 => 7,  29 => 4,  24 => 1,);
+        return array (  252 => 99,  247 => 98,  232 => 72,  229 => 71,  224 => 59,  218 => 4,  210 => 108,  206 => 107,  202 => 106,  197 => 104,  193 => 103,  188 => 101,  185 => 100,  182 => 99,  180 => 98,  164 => 84,  162 => 71,  149 => 60,  147 => 59,  143 => 57,  136 => 56,  129 => 55,  119 => 53,  117 => 52,  110 => 47,  104 => 45,  102 => 44,  98 => 43,  89 => 37,  78 => 28,  76 => 27,  71 => 25,  67 => 24,  62 => 22,  56 => 19,  47 => 13,  41 => 10,  35 => 7,  29 => 4,  24 => 1,);
     }
 }
