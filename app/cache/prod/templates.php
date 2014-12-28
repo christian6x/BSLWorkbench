@@ -79,6 +79,8 @@
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\vendor\\doctrine\\doctrine-bundle/Resources/views/Collector/explain.html.twig',
   'AppBundle::base.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\src\\AppBundle/Resources/views/base.html.twig',
   'AppBundle:default:index.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\src\\AppBundle/Resources/views/default/index.html.twig',
+  'ComBundle:Default:index.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\src\\ComBundle/Resources/views/Default/index.html.twig',
+  'ComBundle:sqr:suggest.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\src\\ComBundle/Resources/views/sqr/suggest.html.twig',
   'FOSUserBundle:ChangePassword:changePassword.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\vendor\\friendsofsymfony\\user-bundle/Resources/views/ChangePassword/changePassword.html.twig',
   'FOSUserBundle:ChangePassword:changePassword_content.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\vendor\\friendsofsymfony\\user-bundle/Resources/views/ChangePassword/changePassword_content.html.twig',
   'FOSUserBundle:Group:edit.html.twig' => 'C:\\wamp\\www\\BSLWorkbench\\vendor\\friendsofsymfony\\user-bundle/Resources/views/Group/edit.html.twig',

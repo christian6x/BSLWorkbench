@@ -9,7 +9,7 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
 
         // line 1
         try {
-            $this->parent = $this->env->loadTemplate("base.html.twig");
+            $this->parent = $this->env->loadTemplate("AppBundle::base.html.twig");
         } catch (Twig_Error_Loader $e) {
             $e->setTemplateFile($this->getTemplateName());
             $e->setTemplateLine(1);
@@ -18,14 +18,13 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
         }
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
-            'fos_user_content' => array($this, 'block_fos_user_content'),
+            'body_left' => array($this, 'block_body_left'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "base.html.twig";
+        return "AppBundle::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -34,7 +33,7 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_body_left($context, array $blocks = array())
     {
         // line 4
         echo "
@@ -75,14 +74,8 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
         }
         // line 16
         echo "        </div>
-    
-     ";
-        // line 18
-        $this->displayBlock('fos_user_content', $context, $blocks);
-    }
 
-    public function block_fos_user_content($context, array $blocks = array())
-    {
+";
     }
 
     public function getTemplateName()
@@ -97,6 +90,6 @@ class __TwigTemplate_6052ea894e101902eed070f0bd2b0ea08d2024f209f15ec5129cc9895fe
 
     public function getDebugInfo()
     {
-        return array (  81 => 18,  77 => 16,  70 => 14,  63 => 13,  57 => 10,  53 => 9,  49 => 8,  46 => 7,  44 => 6,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  76 => 16,  69 => 14,  62 => 13,  56 => 10,  52 => 9,  48 => 8,  45 => 7,  43 => 6,  39 => 4,  36 => 3,  11 => 1,);
     }
 }

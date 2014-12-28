@@ -141,6 +141,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            if (0 === strpos($pathinfo, '/js/13b8adf')) {
+                // _assetic_13b8adf
+                if ($pathinfo === '/js/13b8adf.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '13b8adf',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_13b8adf',);
+                }
+
+                // _assetic_13b8adf_0
+                if ($pathinfo === '/js/13b8adf_suggest_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '13b8adf',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_13b8adf_0',);
+                }
+
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/_')) {
@@ -253,13 +266,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'ComBundle\\Controller\\DefaultController::indexAction',  '_route' => 'com_homepage',);
             }
 
-            // com_ips_square_suggest
-            if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'com_ips_square_suggest');
+            if (0 === strpos($pathinfo, '/com/ips-square-suggest')) {
+                // com_ips_square_suggest
+                if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'com_ips_square_suggest');
+                    }
+
+                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
                 }
 
-                return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
+                // square_suggest
+                if ($pathinfo === '/com/ips-square-suggest/suggestion') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_square_suggest;
+                    }
+
+                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::suggestAction',  '_route' => 'square_suggest',);
+                }
+                not_square_suggest:
+
             }
 
         }

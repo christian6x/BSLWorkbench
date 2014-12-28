@@ -4,3 +4,9 @@ com_homepage:
 com_ips_square_suggest:
     path:     /ips-square-suggest/
     defaults: { _controller: ComBundle:IpsSquareSuggest:render }
+square_suggest:
+    path: /ips-square-suggest/suggestion
+    defaults: { _controller: ComBundle:IpsSquareSuggest:suggest }
+    requirements:
+        _method: POST
+    

@@ -27,6 +27,41 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        if (0 === strpos($pathinfo, '/com')) {
+            // com_homepage
+            if (rtrim($pathinfo, '/') === '/com/main') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'com_homepage');
+                }
+
+                return array (  '_controller' => 'ComBundle\\Controller\\DefaultController::indexAction',  '_route' => 'com_homepage',);
+            }
+
+            if (0 === strpos($pathinfo, '/com/ips-square-suggest')) {
+                // com_ips_square_suggest
+                if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'com_ips_square_suggest');
+                    }
+
+                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
+                }
+
+                // square_suggest
+                if ($pathinfo === '/com/ips-square-suggest/suggestion') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_square_suggest;
+                    }
+
+                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::suggestAction',  '_route' => 'square_suggest',);
+                }
+                not_square_suggest:
+
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
@@ -196,6 +231,15 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
 
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        }
+
+        // _homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', '_homepage');
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => '_homepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

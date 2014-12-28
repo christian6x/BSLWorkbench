@@ -32,6 +32,7 @@ class appProdProjectContainer extends Container
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'AppBundle' => 'AppBundle\\AppBundle',
                 'UserBundle' => 'UserBundle\\UserBundle',
+                'ComBundle' => 'ComBundle\\ComBundle',
                 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
                 'BraincraftedBootstrapBundle' => 'Braincrafted\\Bundle\\BootstrapBundle\\BraincraftedBootstrapBundle',
             ),
@@ -427,6 +428,7 @@ class appProdProjectContainer extends Container
             ),
             'assetic.cache_dir' => 'C:/wamp/www/BSLWorkbench/app/cache/prod/assetic',
             'assetic.bundles' => array(
+                0 => 'ComBundle',
             ),
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
@@ -619,13 +621,14 @@ class appProdProjectContainer extends Container
             'braincrafted_bootstrap.icon_prefix' => 'glyphicon',
             'braincrafted_bootstrap.flash.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Session\\FlashMessage',
             'braincrafted_bootstrap.customize' => array(
+                'variables_file' => NULL,
                 'bootstrap_output' => 'C:/wamp/www/BSLWorkbench/app/Resources/less/bootstrap.less',
                 'bootstrap_template' => 'BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig',
             ),
             'braincrafted_bootstrap.assets_dir' => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap',
             'braincrafted_bootstrap.fontawesome_dir' => 'C:/wamp/www/BSLWorkbench/app/../vendor/fortawesome/font-awesome',
             'braincrafted_bootstrap.fonts_dir' => 'C:/wamp/www/BSLWorkbench/app/../web/fonts',
-            'braincrafted_bootstrap.output_dir' => '',
+            'braincrafted_bootstrap.output_dir' => NULL,
             'braincrafted_bootstrap.less_filter' => 'lessphp',
             'braincrafted_bootstrap.icon_tag' => 'span',
             'console.command.ids' => array(
@@ -889,9 +892,11 @@ class appProdProjectContainer extends Container
     }
     protected function getAssetic_AssetManagerService()
     {
+        $a = $this->get('templating.loader');
         $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('config' => new \Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader(), 'twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig'), $this->get('monolog.logger.assetic', ContainerInterface::NULL_ON_INVALID_REFERENCE)), new \Assetic\Cache\ConfigCache('C:/wamp/www/BSLWorkbench/app/cache/prod/assetic/config'), false)));
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource(array('bootstrap_css' => array(0 => array(0 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/less/bootstrap.less', 1 => (dirname(dirname(dirname(__DIR__))).'\\vendor\\braincrafted\\bootstrap-bundle\\Braincrafted\\Bundle\\BootstrapBundle\\DependencyInjection/../Resources/less/form.less')), 1 => array(0 => 'lessphp'), 2 => array('output' => 'css/bootstrap.css')), 'bootstrap_js' => array(0 => array(0 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/transition.js', 1 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/alert.js', 2 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/button.js', 3 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/carousel.js', 4 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/collapse.js', 5 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/dropdown.js', 6 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/modal.js', 7 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/tooltip.js', 8 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/popover.js', 9 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/scrollspy.js', 10 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/tab.js', 11 => 'C:/wamp/www/BSLWorkbench/app/../vendor/twbs/bootstrap/js/affix.js', 12 => (dirname(dirname(dirname(__DIR__))).'\\vendor\\braincrafted\\bootstrap-bundle\\Braincrafted\\Bundle\\BootstrapBundle\\DependencyInjection/../Resources/js/bc-bootstrap-collection.js')), 1 => array(), 2 => array('output' => 'js/bootstrap.js')), 'jquery' => array(0 => array(0 => 'C:/wamp/www/BSLWorkbench/app/../vendor/jquery/jquery/jquery-1.11.1.js'), 1 => array(), 2 => array('output' => 'js/jquery.js')))), 'config');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($this->get('templating.loader'), '', 'C:/wamp/www/BSLWorkbench/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ComBundle', 'C:/wamp/www/BSLWorkbench/app/Resources/ComBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ComBundle', (dirname(dirname(dirname(__DIR__))).'\\src\\ComBundle/Resources/views'), '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', 'C:/wamp/www/BSLWorkbench/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
         return $instance;
     }
     protected function getAssetic_Filter_CssrewriteService()
@@ -1529,20 +1534,22 @@ class appProdProjectContainer extends Container
         $h = new \Symfony\Component\HttpFoundation\RequestMatcher('^/register');
         $i = new \Symfony\Component\HttpFoundation\RequestMatcher('^/resetting');
         $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/admin/');
-        $k = new \Symfony\Component\Security\Http\AccessMap();
-        $k->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $k->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $k->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $k->add($j, array(0 => 'ROLE_ADMIN'), NULL);
-        $l = new \Symfony\Component\Security\Http\HttpUtils($d, $d);
-        $m = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $l, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($l, '/'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => '/logout'));
-        $m->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        $n = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($l, array());
-        $n->setOptions(array('always_use_default_target_path' => false, 'default_target_path' => '/', 'login_path' => '/login', 'target_path_parameter' => '_target_path', 'use_referer' => false));
-        $n->setProviderKey('main');
-        $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
-        $o->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '549efbab05273', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a));
+        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/com/');
+        $l = new \Symfony\Component\Security\Http\AccessMap();
+        $l->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $l->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $l->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $l->add($j, array(0 => 'ROLE_ADMIN'), NULL);
+        $l->add($k, array(0 => 'IS_AUTHENTICATED_FULLY'), NULL);
+        $m = new \Symfony\Component\Security\Http\HttpUtils($d, $d);
+        $n = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $m, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($m, '/'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => '/logout'));
+        $n->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($m, array());
+        $o->setOptions(array('always_use_default_target_path' => false, 'default_target_path' => '/', 'login_path' => '/login', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $o->setProviderKey('main');
+        $p = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $m, array(), $a);
+        $p->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $m, 'main', $o, $p, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '54a010b70f950', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $l, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $m, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $m, '/login', false), NULL, NULL, $a));
     }
     protected function getSecurity_PasswordEncoderService()
     {
@@ -1998,6 +2005,7 @@ class appProdProjectContainer extends Container
         $instance->addResource('xlf', (dirname(dirname(dirname(__DIR__))).'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.sv.xlf'), 'sv', 'security');
         $instance->addResource('xlf', (dirname(dirname(dirname(__DIR__))).'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.tr.xlf'), 'tr', 'security');
         $instance->addResource('xlf', (dirname(dirname(dirname(__DIR__))).'\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Core\\Exception/../Resources/translations\\security.ua.xlf'), 'ua', 'security');
+        $instance->addResource('yml', (dirname(dirname(dirname(__DIR__))).'\\src\\ComBundle/Resources/translations\\messages.pl.yml'), 'pl', 'messages');
         $instance->addResource('yml', (dirname(dirname(dirname(__DIR__))).'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ar.yml'), 'ar', 'FOSUserBundle');
         $instance->addResource('yml', (dirname(dirname(dirname(__DIR__))).'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.bg.yml'), 'bg', 'FOSUserBundle');
         $instance->addResource('yml', (dirname(dirname(dirname(__DIR__))).'\\vendor\\friendsofsymfony\\user-bundle/Resources/translations\\FOSUserBundle.ca.yml'), 'ca', 'FOSUserBundle');
@@ -2093,7 +2101,7 @@ class appProdProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\ExpressionExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\HttpKernelExtension($this->get('fragment.handler')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig', 1 => 'BraincraftedBootstrapBundle:Form:bootstrap.html.twig')), $this->get('form.csrf_provider', ContainerInterface::NULL_ON_INVALID_REFERENCE))));
-        $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), false, array(), array(), new \Symfony\Bundle\AsseticBundle\DefaultValueSupplier($this)));
+        $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), false, array(), array(0 => 'ComBundle'), new \Symfony\Bundle\AsseticBundle\DefaultValueSupplier($this)));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
         $instance->addExtension($this->get('braincrafted_bootstrap.twig.icon_extension'));
         $instance->addExtension($this->get('braincrafted_bootstrap.twig.label_extension'));
@@ -2123,6 +2131,7 @@ class appProdProjectContainer extends Container
         $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\vendor\\symfony\\swiftmailer-bundle/Resources/views'), 'Swiftmailer');
         $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
         $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\src\\AppBundle/Resources/views'), 'App');
+        $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\src\\ComBundle/Resources/views'), 'Com');
         $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\vendor\\friendsofsymfony\\user-bundle/Resources/views'), 'FOSUser');
         $instance->addPath((dirname(dirname(dirname(__DIR__))).'\\vendor\\braincrafted\\bootstrap-bundle\\Braincrafted\\Bundle\\BootstrapBundle/Resources/views'), 'BraincraftedBootstrap');
         $instance->addPath('C:/wamp/www/BSLWorkbench/app/Resources/views');
@@ -2189,7 +2198,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('549efbab05273')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('54a010b70f950')), true);
         $instance->setEventDispatcher($this->get('event_dispatcher'));
         return $instance;
     }
