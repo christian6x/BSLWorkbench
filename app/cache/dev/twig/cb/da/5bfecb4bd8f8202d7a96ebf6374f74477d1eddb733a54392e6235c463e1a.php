@@ -70,7 +70,7 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        echo "Welcome!";
+        echo "BSL Workbench";
     }
 
     // line 5
