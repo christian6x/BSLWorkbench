@@ -17,6 +17,17 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.11.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.11.2.js",
+                    "type": "file"
+                }
+            }
         }
     ],
     "require": {
@@ -32,7 +43,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.11.*",
+        "jquery/jquery":  "1.11.1",
         "braincrafted/bootstrap-bundle": "~2.0",
         "oyejorge/less.php": "~1.5",
         "leafo/scssphp": "0.0.12"

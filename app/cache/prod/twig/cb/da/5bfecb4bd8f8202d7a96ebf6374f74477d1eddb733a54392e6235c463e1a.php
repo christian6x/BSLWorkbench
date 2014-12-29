@@ -11,6 +11,7 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'stylesheets' => array($this, 'block_stylesheets'),
             'fos_user_content' => array($this, 'block_fos_user_content'),
             'top_c' => array($this, 'block_top_c'),
             'body' => array($this, 'block_body'),
@@ -75,6 +76,9 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         // line 27
         $this->env->loadTemplate("BraincraftedBootstrapBundle::ie8-support.html.twig")->display($context);
         // line 28
+        echo "        ";
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 29
         echo "    </head>
     <body>
     <!-- HEADER -->
@@ -85,7 +89,7 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
                     <div class=\"col-md-3 col-sm-2 logo\">
                         <a href=\"#\" title=\"BSL Logo\">
                             <img src=\"";
-        // line 37
+        // line 38
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/bsl_logo.png"), "html", null, true);
         echo "\" alt=\"BSL\">
                         </a>
@@ -94,28 +98,28 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
                         <nav class=\"main-menu hidden-xs\">
                             <ul>
                                 <li><a href=\"";
-        // line 43
+        // line 44
         echo $this->env->getExtension('routing')->getPath("_homepage");
         echo "\">Home</a></li>
                                 ";
-        // line 44
+        // line 45
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 45
+            // line 46
             echo "                                    <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("com_homepage");
             echo "\">Coms</a></li>
                                 ";
         }
-        // line 47
+        // line 48
         echo "                            </ul>
                         </nav>
                     </div>
                     <div class=\"col-md-2 col-sm-2 col-xs-12\">                           
                         <ul class=\"social-top\">
                             ";
-        // line 52
+        // line 53
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 53
+            // line 54
             echo "                                <li>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo "<a href=\"";
@@ -125,27 +129,27 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
             echo "</span></a></li>
                             ";
         } else {
-            // line 55
+            // line 56
             echo "                                <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                                 <li><a href=\"";
-            // line 56
+            // line 57
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                             ";
         }
-        // line 57
+        // line 58
         echo "  
                         </ul>
                             ";
-        // line 59
-        $this->displayBlock('fos_user_content', $context, $blocks);
         // line 60
+        $this->displayBlock('fos_user_content', $context, $blocks);
+        // line 61
         echo "                    </div>
                 </div>
                 <div class=\"text-right visible-xs\">
@@ -158,9 +162,9 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     
     <!-- TOP CONTENT -->
     ";
-        // line 71
+        // line 72
         $this->displayBlock('top_c', $context, $blocks);
-        // line 84
+        // line 85
         echo "
     
 
@@ -176,11 +180,8 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     </footer> <!-- .site-footer -->
         
         ";
-        // line 98
-        $this->displayBlock('body', $context, $blocks);
         // line 99
-        echo "        ";
-        $this->displayBlock('javascripts', $context, $blocks);
+        $this->displayBlock('body', $context, $blocks);
         // line 100
         echo "        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src=\"";
@@ -209,7 +210,11 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         // line 108
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/templatemo_custom.js"), "html", null, true);
         echo "\"></script> 
-    </body>
+        ";
+        // line 109
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 110
+        echo "    </body>
 </html>
 ";
     }
@@ -220,15 +225,20 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         echo "BSL Workbench";
     }
 
-    // line 59
+    // line 28
+    public function block_stylesheets($context, array $blocks = array())
+    {
+    }
+
+    // line 60
     public function block_fos_user_content($context, array $blocks = array())
     {
     }
 
-    // line 71
+    // line 72
     public function block_top_c($context, array $blocks = array())
     {
-        // line 72
+        // line 73
         echo "        <div class=\"top-c\">
         <div class=\"container\">
             <div class=\"row\">
@@ -243,12 +253,12 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     ";
     }
 
-    // line 98
+    // line 99
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 99
+    // line 109
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -265,6 +275,6 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
 
     public function getDebugInfo()
     {
-        return array (  252 => 99,  247 => 98,  232 => 72,  229 => 71,  224 => 59,  218 => 4,  210 => 108,  206 => 107,  202 => 106,  197 => 104,  193 => 103,  188 => 101,  185 => 100,  182 => 99,  180 => 98,  164 => 84,  162 => 71,  149 => 60,  147 => 59,  143 => 57,  136 => 56,  129 => 55,  119 => 53,  117 => 52,  110 => 47,  104 => 45,  102 => 44,  98 => 43,  89 => 37,  78 => 28,  76 => 27,  71 => 25,  67 => 24,  62 => 22,  56 => 19,  47 => 13,  41 => 10,  35 => 7,  29 => 4,  24 => 1,);
+        return array (  262 => 109,  257 => 99,  242 => 73,  239 => 72,  234 => 60,  229 => 28,  223 => 4,  217 => 110,  215 => 109,  211 => 108,  207 => 107,  203 => 106,  198 => 104,  194 => 103,  189 => 101,  186 => 100,  184 => 99,  168 => 85,  166 => 72,  153 => 61,  151 => 60,  147 => 58,  140 => 57,  133 => 56,  123 => 54,  121 => 53,  114 => 48,  108 => 46,  106 => 45,  102 => 44,  93 => 38,  82 => 29,  79 => 28,  77 => 27,  72 => 25,  68 => 24,  63 => 22,  57 => 19,  48 => 13,  42 => 10,  36 => 7,  30 => 4,  25 => 1,);
     }
 }

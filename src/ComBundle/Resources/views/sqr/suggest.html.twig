@@ -7,19 +7,22 @@
                         <h3 class="topc-title">ips-square-suggest</h3>
                             <form  action="#" method="POST" {{ form_enctype(form) }}>
                                 {{ form_row(form._token) }}
-                                {{ form_row(form.search, { 'id': 'search_suggest'} ) }}
+                                {{ form_row(form.search, { 'id': 'search_suggest', 'autocomplete': 'off'} ) }}
                                 {{ form_row(form.submit) }}
                             </form>
                     </div>
                 </div>
             </div>
-        </div>
-    {% javascripts '@ComBundle/Resources/public/js/suggest.js' %}
-        <script>
-                var path_to_controller = "{{ path('square_suggest') }}";
-        </script>
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script type="text/javascript" src="{{ asset_url }}"/>
-    {% endjavascripts %}
+        </div>   
     {% endblock %}
-
+    {% block stylesheets %}
+        {% stylesheets '@ComBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    {% block javascripts %}
+        {% javascripts '@ComBundle/Resources/public/js/*' output='js/compiled/main.js' %}
+            <script>var path_to_controller = "{{ path('square_suggest') }}";</script>
+            <script type="text/javascript" src="{{ asset_url }}"/></script>
+        {% endjavascripts %}
+    {% endblock %}

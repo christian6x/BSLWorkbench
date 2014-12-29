@@ -25,6 +25,7 @@
         <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
     <!-- HEADER -->
@@ -96,7 +97,6 @@
     </footer> <!-- .site-footer -->
         
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src="{{ asset('js/jquery.js') }}"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
@@ -106,5 +106,6 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/plugins.js') }}"></script>
         <script src="{{ asset('js/templatemo_custom.js') }}"></script> 
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

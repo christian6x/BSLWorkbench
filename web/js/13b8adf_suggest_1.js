@@ -3,25 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*jQuery(document).ready(function()
-{*/
+jQuery(document).ready(function()
+{
 $('#search_suggest').keyup(function(key)
 {
     var value = this.value;
+    var x;
     $.ajax({
         type: "POST",
         url: path_to_controller,
-        data: { "optionsSelected" : value},
-        succes : function(data)
+        data: { "value" : value},
+        succes : function(result)
         {
-            alert(data);
+
         },
         
         error: function(XMLHttpRequest, textStatus, errorThrown)
         {
             alert('Error: ' + errorThrown + '\n' + textStatus);
         }
+        
+    }).done(function(result)
+    {
+        if(result.name)
+        {
+            console.log(result);
+            var name = result.name;
+
+        }
     });
 });
-//});
+});
 
