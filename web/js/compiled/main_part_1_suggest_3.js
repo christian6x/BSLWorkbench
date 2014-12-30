@@ -9,7 +9,6 @@ jQuery(document).ready(function()
 $('#search_suggest').keyup(function(key)
 {
     var value = this.value;
-    var x;
     $.ajax({
         type: "POST",
         url: path_to_controller,

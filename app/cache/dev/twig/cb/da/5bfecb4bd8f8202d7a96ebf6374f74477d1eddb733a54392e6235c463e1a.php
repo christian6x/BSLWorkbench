@@ -12,7 +12,6 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
-            'fos_user_content' => array($this, 'block_fos_user_content'),
             'top_c' => array($this, 'block_top_c'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
@@ -146,11 +145,7 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
         // line 58
         echo "  
                         </ul>
-                            ";
-        // line 60
-        $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 61
-        echo "                    </div>
+                    </div>
                 </div>
                 <div class=\"text-right visible-xs\">
                     <a href=\"#\" id=\"mobile_menu\"><span class=\"fa fa-bars\"></span></a>
@@ -162,9 +157,9 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     
     <!-- TOP CONTENT -->
     ";
-        // line 72
+        // line 71
         $this->displayBlock('top_c', $context, $blocks);
-        // line 85
+        // line 84
         echo "
     
 
@@ -180,40 +175,40 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     </footer> <!-- .site-footer -->
         
         ";
-        // line 99
+        // line 98
         $this->displayBlock('body', $context, $blocks);
-        // line 100
+        // line 99
         echo "        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src=\"";
-        // line 101
+        // line 100
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src=\"";
-        // line 103
+        // line 102
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 104
+        // line 103
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/vendor/jquery-1.10.1.min.js"), "html", null, true);
         echo "\"></script>
         <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\\/script>')</script>
         <script src=\"";
-        // line 106
+        // line 105
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 107
+        // line 106
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 108
+        // line 107
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/templatemo_custom.js"), "html", null, true);
         echo "\"></script> 
         ";
-        // line 109
+        // line 108
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 110
+        // line 109
         echo "    </body>
 </html>
 ";
@@ -230,16 +225,11 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     {
     }
 
-    // line 60
-    public function block_fos_user_content($context, array $blocks = array())
-    {
-    }
-
-    // line 72
+    // line 71
     public function block_top_c($context, array $blocks = array())
     {
-        // line 73
-        echo "        <div class=\"top-c\">
+        // line 72
+        echo "    <div class=\"top-c\">
         <div class=\"container\">
             <div class=\"row\">
                 <div class=\"col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2\">
@@ -253,12 +243,12 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
     ";
     }
 
-    // line 99
+    // line 98
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 109
+    // line 108
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -275,6 +265,6 @@ class __TwigTemplate_cbda5bfecb4bd8f8202d7a96ebf6374f74477d1eddb733a54392e6235c4
 
     public function getDebugInfo()
     {
-        return array (  262 => 109,  257 => 99,  242 => 73,  239 => 72,  234 => 60,  229 => 28,  223 => 4,  217 => 110,  215 => 109,  211 => 108,  207 => 107,  203 => 106,  198 => 104,  194 => 103,  189 => 101,  186 => 100,  184 => 99,  168 => 85,  166 => 72,  153 => 61,  151 => 60,  147 => 58,  140 => 57,  133 => 56,  123 => 54,  121 => 53,  114 => 48,  108 => 46,  106 => 45,  102 => 44,  93 => 38,  82 => 29,  79 => 28,  77 => 27,  72 => 25,  68 => 24,  63 => 22,  57 => 19,  48 => 13,  42 => 10,  36 => 7,  30 => 4,  25 => 1,);
+        return array (  252 => 108,  247 => 98,  232 => 72,  229 => 71,  224 => 28,  218 => 4,  212 => 109,  210 => 108,  206 => 107,  202 => 106,  198 => 105,  193 => 103,  189 => 102,  184 => 100,  181 => 99,  179 => 98,  163 => 84,  161 => 71,  146 => 58,  139 => 57,  132 => 56,  122 => 54,  120 => 53,  113 => 48,  107 => 46,  105 => 45,  101 => 44,  92 => 38,  81 => 29,  78 => 28,  76 => 27,  71 => 25,  67 => 24,  62 => 22,  56 => 19,  47 => 13,  41 => 10,  35 => 7,  29 => 4,  24 => 1,);
     }
 }

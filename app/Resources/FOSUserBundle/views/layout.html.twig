@@ -1,0 +1,27 @@
+{% extends "AppBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block top_c %}
+    <div class="top-c">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="flash-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        <h3 class="topc-title">
+                            {% if app.request.get('_route') == 'fos_user_security_login' %} 
+                                {{ 'layout.login'|trans }}
+                            {% elseif app.request.get('_route') == 'fos_user_registration_register' %}
+                                {{ 'layout.register'|trans }}
+                            {% endif %}
+                        </h3>
+                        {% block fos_user_content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>   
+{% endblock %}

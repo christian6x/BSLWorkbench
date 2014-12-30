@@ -57,7 +57,6 @@
                                 <li><a href="{{ path('fos_user_registration_register') }}"><span class="hidden-xs">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</span></a></li>
                             {% endif %}  
                         </ul>
-                            {% block fos_user_content %}{% endblock %}
                     </div>
                 </div>
                 <div class="text-right visible-xs">
@@ -70,7 +69,7 @@
     
     <!-- TOP CONTENT -->
     {% block top_c %}
-        <div class="top-c">
+    <div class="top-c">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2">
