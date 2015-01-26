@@ -3,56 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/security.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/symfony/symfony/src/Symfony/Component/Intl/Tests/Data/Bundle/Reader/Fixtures/json/en.json</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/AppKernel.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Controller/WelcomeController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/config_prod.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Resources/views/Default/index.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/config/services/form.xml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Resources/views/sqr/suggest.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/AppBundle.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/parameters.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views/layout.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Resources/translations/messages.pl.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/routing.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/ComBundle.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/Resources/views/default/index.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/AcmeDemoBundle.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/Resources/views/default/index.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Command/InstallCommand.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Controller/DemoController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/UserBundle/UserBundle.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Controller/IpsSquareSuggestController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/UserBundle/Entity/User.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/Tests/Controller/DefaultControllerTest.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/routing_dev.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/web/css/bootstrap.css</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/web/css/templatemo_style.css</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/autoload.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Controller/SecuredController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/EventListener/ControllerListener.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Form/ContactType.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/friendsofsymfony/user-bundle/Form/Type/GroupFormType.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/friendsofsymfony/user-bundle/Resources/views/Security/login.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Command/GenerateCommand.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/.git/config</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Resources/views/Demo/index.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/composer.json</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/web/.htaccess</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/Resources/translation/messages.pl.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/README.md</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Resources/config/services.yml</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/web/app_dev.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/AppBundle/Resources/views/base.html.twig</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/ComBundle/Form/ipsSquareSuggestType.php</file>
-            <file>file:/C:/wamp/www/BSLWorkbench/src/Acme/DemoBundle/Command/HelloWorldCommand.php</file>
+            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/web/css/templatemo_style.css</file>
+            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/vendor/symfony/symfony/src/Symfony/Component/Config/Util/XmlUtils.php</file>
+            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/vendor/symfony/symfony/src/Symfony/Component/Intl/Tests/Data/Bundle/Reader/Fixtures/json/en_Invalid.json</file>
         </group>
     </open-files>
 </project-private>
