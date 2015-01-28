@@ -43,20 +43,24 @@ class __TwigTemplate_68109add6b8125c2bbeb405d0ef916535b3576c593e41e31684bece34b9
                 <div class=\"row\">
                     <div class=\"col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12\">
                         <h3 class=\"topc-title\">ips-square-suggest</h3>
-                            <form  action=\"#\" method=\"POST\" ";
-        // line 8
+                            
+                            <form  action=\"";
+        // line 9
+        echo $this->env->getExtension('routing')->getPath("com_ips_square_search");
+        echo "\" method=\"POST\" ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'enctype');
         echo ">
-                                ";
-        // line 9
+                            ";
+        // line 11
+        echo "                                ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "_token", array()), 'row');
         echo "
                                 ";
-        // line 10
+        // line 12
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "search", array()), 'row', array("id" => "search_suggest", "autocomplete" => "off"));
         echo "
                                 ";
-        // line 11
+        // line 13
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "submit", array()), 'row');
         echo "
                             </form>
@@ -67,15 +71,15 @@ class __TwigTemplate_68109add6b8125c2bbeb405d0ef916535b3576c593e41e31684bece34b9
     ";
     }
 
-    // line 18
+    // line 21
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 19
+        // line 22
         echo "        ";
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "cfda9e6_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_cfda9e6_0") : $this->env->getExtension('assets')->getAssetUrl("css/cfda9e6_part_1_jquery-ui_1.css");
-            // line 20
+            // line 23
             echo "            <link rel=\"stylesheet\" href=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\" />
@@ -119,64 +123,64 @@ class __TwigTemplate_68109add6b8125c2bbeb405d0ef916535b3576c593e41e31684bece34b9
         ";
         }
         unset($context["asset_url"]);
-        // line 22
+        // line 25
         echo "    ";
     }
 
-    // line 23
+    // line 26
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 24
+        // line 27
         echo "        ";
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "9d688a3_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_9d688a3_0") : $this->env->getExtension('assets')->getAssetUrl("js/compiled/main_part_1_jquery-ui_1.js");
-            // line 25
+            // line 28
             echo "            <script>var path_to_controller = \"";
             echo $this->env->getExtension('routing')->getPath("square_suggest");
             echo "\";</script>
             <script type=\"text/javascript\" src=\"";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"/></script>
         ";
             // asset "9d688a3_1"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_9d688a3_1") : $this->env->getExtension('assets')->getAssetUrl("js/compiled/main_part_1_jquery-ui.min_2.js");
-            // line 25
+            // line 28
             echo "            <script>var path_to_controller = \"";
             echo $this->env->getExtension('routing')->getPath("square_suggest");
             echo "\";</script>
             <script type=\"text/javascript\" src=\"";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"/></script>
         ";
             // asset "9d688a3_2"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_9d688a3_2") : $this->env->getExtension('assets')->getAssetUrl("js/compiled/main_part_1_suggest_3.js");
-            // line 25
+            // line 28
             echo "            <script>var path_to_controller = \"";
             echo $this->env->getExtension('routing')->getPath("square_suggest");
             echo "\";</script>
             <script type=\"text/javascript\" src=\"";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"/></script>
         ";
         } else {
             // asset "9d688a3"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_9d688a3") : $this->env->getExtension('assets')->getAssetUrl("js/compiled/main.js");
-            // line 25
+            // line 28
             echo "            <script>var path_to_controller = \"";
             echo $this->env->getExtension('routing')->getPath("square_suggest");
             echo "\";</script>
             <script type=\"text/javascript\" src=\"";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"/></script>
         ";
         }
         unset($context["asset_url"]);
-        // line 28
+        // line 31
         echo "    ";
     }
 
@@ -192,6 +196,6 @@ class __TwigTemplate_68109add6b8125c2bbeb405d0ef916535b3576c593e41e31684bece34b9
 
     public function getDebugInfo()
     {
-        return array (  180 => 28,  174 => 26,  169 => 25,  162 => 26,  157 => 25,  151 => 26,  146 => 25,  140 => 26,  135 => 25,  130 => 24,  127 => 23,  123 => 22,  79 => 20,  74 => 19,  71 => 18,  60 => 11,  56 => 10,  52 => 9,  48 => 8,  41 => 3,  38 => 2,  11 => 1,);
+        return array (  184 => 31,  178 => 29,  173 => 28,  166 => 29,  161 => 28,  155 => 29,  150 => 28,  144 => 29,  139 => 28,  134 => 27,  131 => 26,  127 => 25,  83 => 23,  78 => 22,  75 => 21,  64 => 13,  60 => 12,  55 => 11,  49 => 9,  41 => 3,  38 => 2,  11 => 1,);
     }
 }

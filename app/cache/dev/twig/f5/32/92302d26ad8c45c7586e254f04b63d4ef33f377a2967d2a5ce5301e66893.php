@@ -81,21 +81,24 @@ class __TwigTemplate_f53292302d26ad8c45c7586e254f04b63d4ef33f377a2967d2a5ce5301e
                                     <em>Now you need to browse some pages with the Symfony Profiler enabled to collect data.</em>
                                 </p>
                             ";
-        } elseif (((isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "upload_error")) {
+        } elseif ((        // line 17
+(isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "upload_error")) {
             // line 18
             echo "                                <h2>A problem occurred when uploading the data</h2>
                                 <p>
                                     <em>No file given or the file was not uploaded successfully.</em>
                                 </p>
                             ";
-        } elseif (((isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "already_exists")) {
+        } elseif ((        // line 22
+(isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "already_exists")) {
             // line 23
             echo "                                <h2>A problem occurred when uploading the data</h2>
                                 <p>
                                     <em>The token already exists in the database.</em>
                                 </p>
                             ";
-        } elseif (((isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "no_token")) {
+        } elseif ((        // line 27
+(isset($context["about"]) ? $context["about"] : $this->getContext($context, "about")) == "no_token")) {
             // line 28
             echo "                                <h2>Token not found</h2>
                                 <p>
@@ -122,6 +125,6 @@ class __TwigTemplate_f53292302d26ad8c45c7586e254f04b63d4ef33f377a2967d2a5ce5301e
 
     public function getDebugInfo()
     {
-        return array (  110 => 33,  104 => 30,  100 => 28,  93 => 23,  86 => 18,  79 => 13,  76 => 12,  73 => 11,  65 => 39,  63 => 38,  59 => 37,  54 => 34,  52 => 11,  45 => 6,  43 => 5,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  113 => 33,  107 => 30,  103 => 28,  101 => 27,  95 => 23,  93 => 22,  87 => 18,  85 => 17,  79 => 13,  76 => 12,  73 => 11,  65 => 39,  63 => 38,  59 => 37,  54 => 34,  52 => 11,  45 => 6,  43 => 5,  40 => 4,  37 => 3,  11 => 1,);
     }
 }

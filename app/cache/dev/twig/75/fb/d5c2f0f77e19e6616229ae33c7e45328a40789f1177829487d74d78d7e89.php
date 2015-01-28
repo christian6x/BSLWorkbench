@@ -65,11 +65,11 @@ class __TwigTemplate_75fbd5c2f0f77e19e6616229ae33c7e45328a40789f1177829487d74d78
                             <strong>Profile for:</strong>
                             ";
             // line 18
-            echo twig_escape_filter($this->env, strtoupper($this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method", array())), "html", null, true);
+            echo twig_escape_filter($this->env, twig_upper_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method", array())), "html", null, true);
             echo "
                             ";
             // line 19
-            if (twig_in_filter(strtoupper($this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method", array())), array(0 => "GET", 1 => "HEAD"))) {
+            if (twig_in_filter(twig_upper_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method", array())), array(0 => "GET", 1 => "HEAD"))) {
                 // line 20
                 echo "                                <a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "url", array()), "html", null, true);

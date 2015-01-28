@@ -396,10 +396,8 @@ a#mobile_menu {
   font-weight: 700;
   margin: 110px 0 30px 0;
 }
-/*
-    Poniższe sekcje są do zastąpienia
-*/
-#services {
+
+#middle-content {
   background: url(../images/service-bg.png) no-repeat top center;
   background-size: cover;
   padding-top: 140px;
@@ -408,7 +406,7 @@ a#mobile_menu {
   z-index: 10;
   margin-top: 20px;
 }
-#services .service-item .service-icon {
+#middle-content .middle_c-item .middle_c-icon {
   width: 136px;
   height: 136px;
   line-height: 136px;
@@ -433,18 +431,18 @@ a#mobile_menu {
   -ms-transform: rotate(0);
   transform: rotate(0);
 }
-#services .service-item .service-icon i {
+#middle-content .middle_c-item .middle_c-icon i {
   text-align: center;
   line-height: 136px;
 }
-#services .service-item h3.service-title {
+#middle-content .middle_c-item h3.middle_c-title {
   text-transform: uppercase;
   font-size: 16px;
   color: #39c8e2;
   font-weight: 600;
   margin-top: 25px;
 }
-#services .service-item:hover .service-icon {
+#middle-content .middle_c-item:hover .middle_c-icon {
   background: #39c8e2;
   color: #ffffff;
   -webkit-transform: rotate(360deg);
@@ -453,6 +451,9 @@ a#mobile_menu {
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
 }
+/*
+    Poniższe sekcje są do zastąpienia
+*/
 #products {
   background: url(../images/products-bg.png) no-repeat top center;
   background-size: cover;
@@ -634,14 +635,14 @@ a#mobile_menu {
   .top-c h3.topc-title {
     margin-top: 100px;
   }
-  #services {
+  #middle-content {
 /*  background-image: none;
     background-color: #ececec;	*/
     margin-top: 0;
 	padding-top: 100px;
     padding-bottom: 60px;
   }
-  #services .service-item {
+  #middle-content .middle_c-item {
     margin-bottom: 40px;
   }
   #products {

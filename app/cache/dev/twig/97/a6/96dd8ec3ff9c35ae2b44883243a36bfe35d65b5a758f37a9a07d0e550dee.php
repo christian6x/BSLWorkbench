@@ -1,6 +1,6 @@
 <?php
 
-/* WebProfilerBundle:Profiler:base_js.html.twig */
+/* @WebProfiler/Profiler/base_js.html.twig */
 class __TwigTemplate_97a696dd8ec3ff9c35ae2b44883243a36bfe35d65b5a758f37a9a07d0e550dee extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -88,12 +88,12 @@ class __TwigTemplate_97a696dd8ec3ff9c35ae2b44883243a36bfe35d65b5a758f37a9a07d0e5
             requestStack = [],
 
             renderAjaxRequests = function() {
-                var requestCounter = document.getElementsByClassName('sf-toolbar-ajax-requests');
+                var requestCounter = document.querySelectorAll('.sf-toolbar-ajax-requests');
                 if (!requestCounter.length) {
                     return;
                 }
 
-                var tbodies = document.getElementsByClassName('sf-toolbar-ajax-request-list');
+                var tbodies = document.querySelectorAll('.sf-toolbar-ajax-request-list');
                 var state = 'ok';
                 if (tbodies.length) {
                     var tbody = tbodies[0];
@@ -154,7 +154,7 @@ class __TwigTemplate_97a696dd8ec3ff9c35ae2b44883243a36bfe35d65b5a758f37a9a07d0e5
                             row.className = 'sf-ajax-request sf-ajax-request-' + requestState;
                         }
 
-                        var infoSpan = document.getElementsByClassName(\"sf-toolbar-ajax-info\")[0];
+                        var infoSpan = document.querySelectorAll(\".sf-toolbar-ajax-info\")[0];
                         var children = Array.prototype.slice.call(tbody.children);
                         for (var i = 0; i < children.length; i++) {
                             tbody.removeChild(children[i]);
@@ -293,7 +293,7 @@ class __TwigTemplate_97a696dd8ec3ff9c35ae2b44883243a36bfe35d65b5a758f37a9a07d0e5
 
     public function getTemplateName()
     {
-        return "WebProfilerBundle:Profiler:base_js.html.twig";
+        return "@WebProfiler/Profiler/base_js.html.twig";
     }
 
     public function isTraitable()

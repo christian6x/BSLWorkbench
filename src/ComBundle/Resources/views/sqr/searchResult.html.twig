@@ -1,0 +1,39 @@
+{% extends "AppBundle::base.html.twig" %}
+    {% block top_c %}
+        <div class="top-c">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12" style="overflow : scroll; height: 500px; ">
+                        <h3 class="topc-title">ips-square-search</h3>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Event-id</th>
+                                    <th>Context</th>
+                                    <th>Description</th>
+                                    <th>System-date</th>
+                                    <th>Type</th>                                 
+                                </tr>
+                            </thead>
+                            {% for row in result %}
+                                <tr>
+                                    <td>  {{ attribute(row, 'event-id') }} </td>
+                                    <td>  {{ attribute(row, 'context') }} </td>
+                                    <td>  {{ attribute(row, 'description') }} </td>
+                                    <td>  {{ attribute(row, 'system-date') }} </td>
+                                    <td>  {{ attribute(row, 'type') }} </td>
+                                </tr>
+                            {% endfor %}
+                            </table>
+                            </div> 
+                        </div>
+                </div>
+            </div>
+    {% endblock %}
+
+    
+    {% block stylesheets %}
+        {% stylesheets '@ComBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}

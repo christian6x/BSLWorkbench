@@ -1,9 +1,10 @@
 com:
     resource: "@ComBundle/Resources/config/routing.yml"
-    prefix:   /com
+    prefix:   /com/
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation

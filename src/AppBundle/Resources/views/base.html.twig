@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
 
         <link href="{{ asset('css/templatemo_style.css') }}" rel="stylesheet" media="screen">
+        
         <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
@@ -81,9 +82,28 @@
         </div>
     </div>
     {% endblock %}
+        <div class="content-section" id="middle-content">
+            <div class="container">
+    {% block mid_c %}
 
-    
+                <div class="row">
+                    <div class="col-md-3 col-xs-6 text-center">
 
+                    </div> 
+                    <div class="col-md-3 col-xs-6 text-center">
+
+                    </div> 
+                    <div class="col-md-3 col-xs-6 text-center">
+
+                    </div> 
+                    <div class="col-md-3 col-xs-6 text-center">
+
+                    </div>
+                </div>
+     
+    {% endblock %}
+           </div> 
+        </div> 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">

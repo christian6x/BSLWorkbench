@@ -697,7 +697,9 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             // line 180
             if ( !twig_test_empty((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")))) {
                 // line 181
-                $context["label"] = strtr((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")), array("%name%" => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "%id%" => (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id"))));
+                $context["label"] = strtr((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")), array("%name%" =>                 // line 182
+(isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "%id%" =>                 // line 183
+(isset($context["id"]) ? $context["id"] : $this->getContext($context, "id"))));
             } else {
                 // line 186
                 $context["label"] = $this->env->getExtension('form')->humanize((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")));
@@ -753,7 +755,9 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
                 // line 213
                 if ( !twig_test_empty((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")))) {
                     // line 214
-                    $context["label"] = strtr((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")), array("%name%" => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "%id%" => (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id"))));
+                    $context["label"] = strtr((isset($context["label_format"]) ? $context["label_format"] : $this->getContext($context, "label_format")), array("%name%" =>                     // line 215
+(isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "%id%" =>                     // line 216
+(isset($context["id"]) ? $context["id"] : $this->getContext($context, "id"))));
                 } else {
                     // line 219
                     $context["label"] = $this->env->getExtension('form')->humanize((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")));
@@ -839,7 +843,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
     public function block_form_start($context, array $blocks = array())
     {
         // line 265
-        $context["method"] = strtoupper((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")));
+        $context["method"] = twig_upper_filter($this->env, (isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")));
         // line 266
         if (twig_in_filter((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), array(0 => "GET", 1 => "POST"))) {
             // line 267
@@ -852,7 +856,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         echo "<form name=\"";
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
         echo "\" method=\"";
-        echo twig_escape_filter($this->env, strtolower((isset($context["form_method"]) ? $context["form_method"] : $this->getContext($context, "form_method"))), "html", null, true);
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, (isset($context["form_method"]) ? $context["form_method"] : $this->getContext($context, "form_method"))), "html", null, true);
         echo "\" action=\"";
         echo twig_escape_filter($this->env, (isset($context["action"]) ? $context["action"] : $this->getContext($context, "action")), "html", null, true);
         echo "\"";
@@ -993,13 +997,15 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
                 echo "=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (($context["attrvalue"] === true)) {
+            } elseif ((            // line 323
+$context["attrvalue"] === true)) {
                 // line 324
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ( !($context["attrvalue"] === false)) {
+            } elseif ( !(            // line 325
+$context["attrvalue"] === false)) {
                 // line 326
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
@@ -1034,13 +1040,15 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
                 echo "=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (($context["attrvalue"] === true)) {
+            } elseif ((            // line 337
+$context["attrvalue"] === true)) {
                 // line 338
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ( !($context["attrvalue"] === false)) {
+            } elseif ( !(            // line 339
+$context["attrvalue"] === false)) {
                 // line 340
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
@@ -1078,13 +1086,15 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
                 echo "=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (($context["attrvalue"] === true)) {
+            } elseif ((            // line 351
+$context["attrvalue"] === true)) {
                 // line 352
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ( !($context["attrvalue"] === false)) {
+            } elseif ( !(            // line 353
+$context["attrvalue"] === false)) {
                 // line 354
                 echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
@@ -1104,6 +1114,6 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
 
     public function getDebugInfo()
     {
-        return array (  1089 => 354,  1083 => 352,  1077 => 350,  1075 => 349,  1073 => 348,  1069 => 347,  1060 => 346,  1057 => 345,  1045 => 340,  1039 => 338,  1033 => 336,  1031 => 335,  1029 => 334,  1025 => 333,  1019 => 332,  1016 => 331,  1004 => 326,  998 => 324,  992 => 322,  990 => 321,  988 => 320,  984 => 319,  980 => 318,  976 => 317,  972 => 316,  966 => 315,  963 => 314,  955 => 310,  951 => 309,  948 => 308,  939 => 301,  937 => 300,  933 => 299,  930 => 298,  925 => 294,  917 => 292,  913 => 291,  911 => 290,  909 => 289,  906 => 288,  900 => 285,  897 => 284,  893 => 281,  890 => 279,  888 => 278,  885 => 277,  878 => 273,  876 => 272,  852 => 271,  849 => 269,  846 => 267,  844 => 266,  842 => 265,  839 => 264,  835 => 261,  833 => 260,  831 => 259,  828 => 258,  824 => 253,  821 => 252,  817 => 249,  815 => 248,  813 => 247,  810 => 246,  806 => 243,  804 => 242,  802 => 241,  800 => 240,  798 => 239,  795 => 238,  791 => 235,  788 => 230,  783 => 226,  763 => 222,  759 => 219,  756 => 214,  754 => 213,  751 => 212,  748 => 210,  745 => 209,  742 => 207,  740 => 206,  738 => 205,  735 => 204,  731 => 199,  729 => 198,  726 => 197,  722 => 194,  720 => 193,  717 => 192,  707 => 189,  703 => 186,  700 => 181,  698 => 180,  696 => 179,  693 => 178,  689 => 175,  687 => 174,  684 => 173,  680 => 170,  678 => 169,  675 => 168,  671 => 165,  669 => 164,  666 => 163,  661 => 160,  659 => 159,  656 => 158,  652 => 155,  650 => 154,  647 => 153,  643 => 150,  641 => 149,  638 => 148,  634 => 145,  631 => 144,  627 => 141,  625 => 140,  622 => 139,  618 => 136,  616 => 135,  613 => 133,  608 => 129,  598 => 128,  593 => 127,  591 => 126,  588 => 124,  586 => 123,  583 => 122,  578 => 118,  576 => 116,  575 => 115,  574 => 114,  573 => 113,  569 => 112,  566 => 110,  564 => 109,  561 => 108,  556 => 104,  554 => 103,  552 => 102,  550 => 101,  548 => 100,  544 => 99,  541 => 97,  539 => 96,  536 => 95,  522 => 92,  519 => 91,  505 => 88,  502 => 87,  477 => 82,  474 => 80,  472 => 79,  470 => 78,  465 => 77,  463 => 76,  446 => 75,  443 => 74,  439 => 71,  437 => 70,  435 => 69,  429 => 66,  427 => 65,  425 => 64,  423 => 63,  421 => 62,  412 => 60,  410 => 59,  402 => 58,  399 => 56,  397 => 55,  394 => 54,  389 => 51,  383 => 49,  381 => 48,  377 => 47,  373 => 46,  370 => 45,  365 => 41,  362 => 39,  360 => 38,  357 => 37,  349 => 34,  346 => 33,  342 => 30,  339 => 28,  337 => 27,  334 => 26,  330 => 23,  328 => 22,  326 => 21,  323 => 19,  321 => 18,  317 => 17,  314 => 16,  300 => 13,  298 => 12,  295 => 11,  290 => 7,  287 => 5,  285 => 4,  282 => 3,  278 => 345,  275 => 344,  273 => 331,  270 => 330,  268 => 314,  265 => 313,  263 => 308,  260 => 307,  257 => 305,  255 => 298,  252 => 297,  250 => 288,  247 => 287,  245 => 284,  242 => 283,  240 => 277,  237 => 276,  235 => 264,  232 => 263,  230 => 258,  227 => 257,  224 => 255,  222 => 252,  219 => 251,  217 => 246,  214 => 245,  212 => 238,  209 => 237,  207 => 230,  204 => 229,  201 => 227,  199 => 226,  196 => 225,  194 => 204,  191 => 203,  188 => 201,  186 => 197,  183 => 196,  181 => 192,  178 => 191,  176 => 178,  173 => 177,  171 => 173,  169 => 168,  166 => 167,  164 => 163,  161 => 162,  159 => 158,  156 => 157,  154 => 153,  151 => 152,  149 => 148,  146 => 147,  144 => 144,  141 => 143,  139 => 139,  136 => 138,  134 => 133,  131 => 132,  129 => 122,  126 => 121,  124 => 108,  121 => 107,  119 => 95,  116 => 94,  114 => 91,  111 => 90,  109 => 87,  106 => 86,  104 => 74,  101 => 73,  99 => 54,  96 => 53,  94 => 45,  91 => 44,  89 => 37,  86 => 36,  84 => 33,  81 => 32,  79 => 26,  76 => 25,  74 => 16,  71 => 15,  69 => 11,  66 => 10,  64 => 3,  61 => 2,);
+        return array (  1099 => 354,  1097 => 353,  1092 => 352,  1090 => 351,  1085 => 350,  1083 => 349,  1081 => 348,  1077 => 347,  1068 => 346,  1065 => 345,  1053 => 340,  1051 => 339,  1046 => 338,  1044 => 337,  1039 => 336,  1037 => 335,  1035 => 334,  1031 => 333,  1025 => 332,  1022 => 331,  1010 => 326,  1008 => 325,  1003 => 324,  1001 => 323,  996 => 322,  994 => 321,  992 => 320,  988 => 319,  984 => 318,  980 => 317,  976 => 316,  970 => 315,  967 => 314,  959 => 310,  955 => 309,  952 => 308,  943 => 301,  941 => 300,  937 => 299,  934 => 298,  929 => 294,  921 => 292,  917 => 291,  915 => 290,  913 => 289,  910 => 288,  904 => 285,  901 => 284,  897 => 281,  894 => 279,  892 => 278,  889 => 277,  882 => 273,  880 => 272,  856 => 271,  853 => 269,  850 => 267,  848 => 266,  846 => 265,  843 => 264,  839 => 261,  837 => 260,  835 => 259,  832 => 258,  828 => 253,  825 => 252,  821 => 249,  819 => 248,  817 => 247,  814 => 246,  810 => 243,  808 => 242,  806 => 241,  804 => 240,  802 => 239,  799 => 238,  795 => 235,  792 => 230,  787 => 226,  767 => 222,  763 => 219,  760 => 216,  759 => 215,  758 => 214,  756 => 213,  753 => 212,  750 => 210,  747 => 209,  744 => 207,  742 => 206,  740 => 205,  737 => 204,  733 => 199,  731 => 198,  728 => 197,  724 => 194,  722 => 193,  719 => 192,  709 => 189,  705 => 186,  702 => 183,  701 => 182,  700 => 181,  698 => 180,  696 => 179,  693 => 178,  689 => 175,  687 => 174,  684 => 173,  680 => 170,  678 => 169,  675 => 168,  671 => 165,  669 => 164,  666 => 163,  661 => 160,  659 => 159,  656 => 158,  652 => 155,  650 => 154,  647 => 153,  643 => 150,  641 => 149,  638 => 148,  634 => 145,  631 => 144,  627 => 141,  625 => 140,  622 => 139,  618 => 136,  616 => 135,  613 => 133,  608 => 129,  598 => 128,  593 => 127,  591 => 126,  588 => 124,  586 => 123,  583 => 122,  578 => 118,  576 => 116,  575 => 115,  574 => 114,  573 => 113,  569 => 112,  566 => 110,  564 => 109,  561 => 108,  556 => 104,  554 => 103,  552 => 102,  550 => 101,  548 => 100,  544 => 99,  541 => 97,  539 => 96,  536 => 95,  522 => 92,  519 => 91,  505 => 88,  502 => 87,  477 => 82,  474 => 80,  472 => 79,  470 => 78,  465 => 77,  463 => 76,  446 => 75,  443 => 74,  439 => 71,  437 => 70,  435 => 69,  429 => 66,  427 => 65,  425 => 64,  423 => 63,  421 => 62,  412 => 60,  410 => 59,  402 => 58,  399 => 56,  397 => 55,  394 => 54,  389 => 51,  383 => 49,  381 => 48,  377 => 47,  373 => 46,  370 => 45,  365 => 41,  362 => 39,  360 => 38,  357 => 37,  349 => 34,  346 => 33,  342 => 30,  339 => 28,  337 => 27,  334 => 26,  330 => 23,  328 => 22,  326 => 21,  323 => 19,  321 => 18,  317 => 17,  314 => 16,  300 => 13,  298 => 12,  295 => 11,  290 => 7,  287 => 5,  285 => 4,  282 => 3,  278 => 345,  275 => 344,  273 => 331,  270 => 330,  268 => 314,  265 => 313,  263 => 308,  260 => 307,  257 => 305,  255 => 298,  252 => 297,  250 => 288,  247 => 287,  245 => 284,  242 => 283,  240 => 277,  237 => 276,  235 => 264,  232 => 263,  230 => 258,  227 => 257,  224 => 255,  222 => 252,  219 => 251,  217 => 246,  214 => 245,  212 => 238,  209 => 237,  207 => 230,  204 => 229,  201 => 227,  199 => 226,  196 => 225,  194 => 204,  191 => 203,  188 => 201,  186 => 197,  183 => 196,  181 => 192,  178 => 191,  176 => 178,  173 => 177,  171 => 173,  169 => 168,  166 => 167,  164 => 163,  161 => 162,  159 => 158,  156 => 157,  154 => 153,  151 => 152,  149 => 148,  146 => 147,  144 => 144,  141 => 143,  139 => 139,  136 => 138,  134 => 133,  131 => 132,  129 => 122,  126 => 121,  124 => 108,  121 => 107,  119 => 95,  116 => 94,  114 => 91,  111 => 90,  109 => 87,  106 => 86,  104 => 74,  101 => 73,  99 => 54,  96 => 53,  94 => 45,  91 => 44,  89 => 37,  86 => 36,  84 => 33,  81 => 32,  79 => 26,  76 => 25,  74 => 16,  71 => 15,  69 => 11,  66 => 10,  64 => 3,  61 => 2,);
     }
 }

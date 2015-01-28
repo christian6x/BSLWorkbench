@@ -105,13 +105,13 @@ return $this->saveHandler;
 }
 public function start()
 {
-if ($this->started && !$this->closed) {
+if ($this->started) {
 return true;
 }
 if (PHP_VERSION_ID >= 50400 && \PHP_SESSION_ACTIVE === session_status()) {
 throw new \RuntimeException('Failed to start the session: already started by PHP.');
 }
-if (PHP_VERSION_ID < 50400 && isset($_SESSION) && session_id()) {
+if (PHP_VERSION_ID < 50400 && !$this->closed && isset($_SESSION) && session_id()) {
 throw new \RuntimeException('Failed to start the session: already started by PHP ($_SESSION is set).');
 }
 if (ini_get('session.use_cookies') && headers_sent($file, $line)) {
@@ -128,8 +128,6 @@ return true;
 }
 public function getId()
 {
-if (!$this->started && !$this->closed) {
-return''; }
 return $this->saveHandler->getId();
 }
 public function setId($id)
@@ -271,7 +269,7 @@ $this->setSaveHandler($handler);
 }
 public function start()
 {
-if ($this->started && !$this->closed) {
+if ($this->started) {
 return true;
 }
 $this->loadSession();
@@ -706,12 +704,29 @@ interface TemplateNameParserInterface
 public function parse($name);
 }
 }
+namespace Symfony\Component\Templating
+{
+class TemplateNameParser implements TemplateNameParserInterface
+{
+public function parse($name)
+{
+if ($name instanceof TemplateReferenceInterface) {
+return $name;
+}
+$engine = null;
+if (false !== $pos = strrpos($name,'.')) {
+$engine = substr($name, $pos + 1);
+}
+return new TemplateReference($name, $engine);
+}
+}
+}
 namespace Symfony\Bundle\FrameworkBundle\Templating
 {
-use Symfony\Component\Templating\TemplateNameParserInterface;
 use Symfony\Component\Templating\TemplateReferenceInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-class TemplateNameParser implements TemplateNameParserInterface
+use Symfony\Component\Templating\TemplateNameParser as BaseTemplateNameParser;
+class TemplateNameParser extends BaseTemplateNameParser
 {
 protected $kernel;
 protected $cache = array();
@@ -731,7 +746,7 @@ if (false !== strpos($name,'..')) {
 throw new \RuntimeException(sprintf('Template name "%s" contains invalid characters.', $name));
 }
 if (!preg_match('/^([^:]*):([^:]*):(.+)\.([^\.]+)\.([^\.]+)$/', $name, $matches)) {
-throw new \InvalidArgumentException(sprintf('Template name "%s" is not valid (format is "bundle:section:template.format.engine").', $name));
+return parent::parse($name);
 }
 $template = new TemplateReference($matches[1], $matches[2], $matches[3], $matches[4], $matches[5]);
 if ($template->get('bundle')) {
@@ -1170,7 +1185,6 @@ use Symfony\Component\Routing\Matcher\RequestMatcherInterface;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Routing\Matcher\Dumper\MatcherDumperInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 class Router implements RouterInterface, RequestMatcherInterface
 {
@@ -3436,7 +3450,7 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.16.3';
+const VERSION ='1.18.0';
 protected $charset;
 protected $loader;
 protected $debug;
@@ -3581,6 +3595,23 @@ if (!$this->runtimeInitialized) {
 $this->initRuntime();
 }
 return $this->loadedTemplates[$cls] = new $cls($this);
+}
+public function createTemplate($template)
+{
+$name = sprintf('__string_template__%s', hash('sha256', uniqid(mt_rand(), true), false));
+$loader = new Twig_Loader_Chain(array(
+new Twig_Loader_Array(array($name => $template)),
+$current = $this->getLoader(),
+));
+$this->setLoader($loader);
+try {
+$template = $this->loadTemplate($name);
+} catch (Exception $e) {
+$this->setLoader($current);
+throw $e;
+}
+$this->setLoader($current);
+return $template;
 }
 public function isTemplateFresh($name, $time)
 {
@@ -4914,6 +4945,9 @@ public function setDefaultStrategy($defaultStrategy)
 if (true === $defaultStrategy) {
 $defaultStrategy ='html';
 }
+if ('filename'=== $defaultStrategy) {
+$defaultStrategy = array('Twig_FileExtensionEscapingStrategy','guess');
+}
 $this->defaultStrategy = $defaultStrategy;
 }
 public function getDefaultStrategy($filename)
@@ -5252,10 +5286,6 @@ return $ret ===''?'': new Twig_Markup($ret, $this->env->getCharset());
 }
 return $ret;
 }
-public static function clearCache()
-{
-self::$cache = array();
-}
 }
 }
 namespace Monolog\Formatter
@@ -5324,14 +5354,14 @@ return'[unknown('.gettype($data).')]';
 }
 protected function normalizeException(Exception $e)
 {
-$data = array('class'=> get_class($e),'message'=> $e->getMessage(),'file'=> $e->getFile().':'.$e->getLine(),
+$data = array('class'=> get_class($e),'message'=> $e->getMessage(),'code'=> $e->getCode(),'file'=> $e->getFile().':'.$e->getLine(),
 );
 $trace = $e->getTrace();
 foreach ($trace as $frame) {
 if (isset($frame['file'])) {
 $data['trace'][] = $frame['file'].':'.$frame['line'];
 } else {
-$data['trace'][] = json_encode($frame);
+$data['trace'][] = $this->toJson($this->normalize($frame), true);
 }
 }
 if ($previous = $e->getPrevious()) {
@@ -5363,6 +5393,7 @@ const SIMPLE_FORMAT ="[%datetime%] %channel%.%level_name%: %message% %context% %
 protected $format;
 protected $allowInlineLineBreaks;
 protected $ignoreEmptyContextAndExtra;
+protected $includeStacktraces;
 public function __construct($format = null, $dateFormat = null, $allowInlineLineBreaks = false, $ignoreEmptyContextAndExtra = false)
 {
 $this->format = $format ?: static::SIMPLE_FORMAT;
@@ -5370,13 +5401,28 @@ $this->allowInlineLineBreaks = $allowInlineLineBreaks;
 $this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
 parent::__construct($dateFormat);
 }
+public function includeStacktraces($include = true)
+{
+$this->includeStacktraces = $include;
+if ($this->includeStacktraces) {
+$this->allowInlineLineBreaks = true;
+}
+}
+public function allowInlineLineBreaks($allow = true)
+{
+$this->allowInlineLineBreaks = $allow;
+}
+public function ignoreEmptyContextAndExtra($ignore = true)
+{
+$this->ignoreEmptyContextAndExtra = $ignore;
+}
 public function format(array $record)
 {
 $vars = parent::format($record);
 $output = $this->format;
 foreach ($vars['extra'] as $var => $val) {
 if (false !== strpos($output,'%extra.'.$var.'%')) {
-$output = str_replace('%extra.'.$var.'%', $this->replaceNewlines($this->convertToString($val)), $output);
+$output = str_replace('%extra.'.$var.'%', $this->stringify($val), $output);
 unset($vars['extra'][$var]);
 }
 }
@@ -5392,7 +5438,7 @@ $output = str_replace('%extra%','', $output);
 }
 foreach ($vars as $var => $val) {
 if (false !== strpos($output,'%'.$var.'%')) {
-$output = str_replace('%'.$var.'%', $this->replaceNewlines($this->convertToString($val)), $output);
+$output = str_replace('%'.$var.'%', $this->stringify($val), $output);
 }
 }
 return $output;
@@ -5405,15 +5451,23 @@ $message .= $this->format($record);
 }
 return $message;
 }
+public function stringify($value)
+{
+return $this->replaceNewlines($this->convertToString($value));
+}
 protected function normalizeException(Exception $e)
 {
 $previousText ='';
 if ($previous = $e->getPrevious()) {
 do {
-$previousText .=', '.get_class($previous).': '.$previous->getMessage().' at '.$previous->getFile().':'.$previous->getLine();
+$previousText .=', '.get_class($previous).'(code: '.$previous->getCode().'): '.$previous->getMessage().' at '.$previous->getFile().':'.$previous->getLine();
 } while ($previous = $previous->getPrevious());
 }
-return'[object] ('.get_class($e).': '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine().$previousText.')';
+$str ='[object] ('.get_class($e).'(code: '.$e->getCode().'): '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine().$previousText.')';
+if ($this->includeStacktraces) {
+$str .="\n[stacktrace]\n".$e->getTraceAsString();
+}
+return $str;
 }
 protected function convertToString($data)
 {
@@ -5654,6 +5708,9 @@ $this->bufferSize = $bufferSize;
 $this->bubble = $bubble;
 $this->stopBuffering = $stopBuffering;
 $this->passthruLevel = $passthruLevel;
+if (!$this->handler instanceof HandlerInterface && !is_callable($this->handler)) {
+throw new \RuntimeException("The given handler (".json_encode($this->handler).") is not a callable nor a Monolog\Handler\HandlerInterface object");
+}
 }
 public function isHandling(array $record)
 {
@@ -5676,9 +5733,6 @@ if ($this->stopBuffering) {
 $this->buffering = false;
 }
 if (!$this->handler instanceof HandlerInterface) {
-if (!is_callable($this->handler)) {
-throw new \RuntimeException("The given handler (".json_encode($this->handler).") is not a callable nor a Monolog\Handler\HandlerInterface object");
-}
 $this->handler = call_user_func($this->handler, $record, $this);
 if (!$this->handler instanceof HandlerInterface) {
 throw new \RuntimeException("The factory callable should return a HandlerInterface");
@@ -5729,6 +5783,9 @@ public function __construct($handler, $minLevelOrList = Logger::DEBUG, $maxLevel
 $this->handler = $handler;
 $this->bubble = $bubble;
 $this->setAcceptedLevels($minLevelOrList, $maxLevel);
+if (!$this->handler instanceof HandlerInterface && !is_callable($this->handler)) {
+throw new \RuntimeException("The given handler (".json_encode($this->handler).") is not a callable nor a Monolog\Handler\HandlerInterface object");
+}
 }
 public function getAcceptedLevels()
 {
@@ -5757,10 +5814,6 @@ if (!$this->isHandling($record)) {
 return false;
 }
 if (!$this->handler instanceof HandlerInterface) {
-if (!is_callable($this->handler)) {
-throw new \RuntimeException("The given handler (". json_encode($this->handler)
-.") is not a callable nor a Monolog\\Handler\\HandlerInterface object");
-}
 $this->handler = call_user_func($this->handler, $record, $this);
 if (!$this->handler instanceof HandlerInterface) {
 throw new \RuntimeException("The factory callable should return a HandlerInterface");
@@ -5977,14 +6030,10 @@ public function addRecord($level, $message, array $context = array())
 if (!$this->handlers) {
 $this->pushHandler(new StreamHandler('php://stderr', static::DEBUG));
 }
-if (!static::$timezone) {
-static::$timezone = new \DateTimeZone(date_default_timezone_get() ?:'UTC');
-}
-$record = array('message'=> (string) $message,'context'=> $context,'level'=> $level,'level_name'=> static::getLevelName($level),'channel'=> $this->name,'datetime'=> \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), static::$timezone)->setTimezone(static::$timezone),'extra'=> array(),
-);
+$levelName = static::getLevelName($level);
 $handlerKey = null;
 foreach ($this->handlers as $key => $handler) {
-if ($handler->isHandling($record)) {
+if ($handler->isHandling(array('level'=> $level))) {
 $handlerKey = $key;
 break;
 }
@@ -5992,6 +6041,11 @@ break;
 if (null === $handlerKey) {
 return false;
 }
+if (!static::$timezone) {
+static::$timezone = new \DateTimeZone(date_default_timezone_get() ?:'UTC');
+}
+$record = array('message'=> (string) $message,'context'=> $context,'level'=> $level,'level_name'=> $levelName,'channel'=> $this->name,'datetime'=> \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), static::$timezone)->setTimezone(static::$timezone),'extra'=> array(),
+);
 foreach ($this->processors as $processor) {
 $record = call_user_func($processor, $record);
 }
@@ -6566,6 +6620,7 @@ namespace Doctrine\Common\Lexer
 {
 abstract class AbstractLexer
 {
+private $input;
 private $tokens = array();
 private $position = 0;
 private $peek = 0;
@@ -6573,6 +6628,7 @@ public $lookahead;
 public $token;
 public function setInput($input)
 {
+$this->input = $input;
 $this->tokens = array();
 $this->reset();
 $this->scan($input);
@@ -6591,6 +6647,10 @@ $this->peek = 0;
 public function resetPosition($position = 0)
 {
 $this->position = $position;
+}
+public function getInputUntilPosition($position)
+{
+return substr($this->input, 0, $position);
 }
 public function isNextToken($token)
 {
@@ -6636,7 +6696,11 @@ protected function scan($input)
 {
 static $regex;
 if ( ! isset($regex)) {
-$regex ='/('. implode(')|(', $this->getCatchablePatterns()) .')|'. implode('|', $this->getNonCatchablePatterns()) .'/i';
+$regex = sprintf('/(%s)|%s/%s',
+implode(')|(', $this->getCatchablePatterns()),
+implode('|', $this->getNonCatchablePatterns()),
+$this->getModifiers()
+);
 }
 $flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_OFFSET_CAPTURE;
 $matches = preg_split($regex, $input, -1, $flags);
@@ -6657,6 +6721,10 @@ return $className .'::'. $name;
 }
 }
 return $token;
+}
+protected function getModifiers()
+{
+return'i';
 }
 abstract protected function getCatchablePatterns();
 abstract protected function getNonCatchablePatterns();
@@ -7004,7 +7072,6 @@ public function getManagerForClass($class);
 namespace Symfony\Bridge\Doctrine
 {
 use Doctrine\Common\Persistence\ManagerRegistry as ManagerRegistryInterface;
-use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 interface RegistryInterface extends ManagerRegistryInterface
 {

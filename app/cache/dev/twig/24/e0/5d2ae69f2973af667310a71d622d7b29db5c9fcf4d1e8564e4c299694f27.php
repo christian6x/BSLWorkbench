@@ -1,6 +1,6 @@
 <?php
 
-/* WebProfilerBundle:Profiler:search.html.twig */
+/* @WebProfiler/Profiler/search.html.twig */
 class __TwigTemplate_24e05d2ae69f2973af667310a71d622d7b29db5c9fcf4d1e8564e4c299694f27 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -71,7 +71,7 @@ class __TwigTemplate_24e05d2ae69f2973af667310a71d622d7b29db5c9fcf4d1e8564e4c2996
         // line 24
         echo twig_escape_filter($this->env, (isset($context["start"]) ? $context["start"] : $this->getContext($context, "start")), "html", null, true);
         echo "\" placeholder=\"e.g. ";
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "-2days", "dd.mm.YYYY"), "html", null, true);
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "-2days", "d.m.Y"), "html", null, true);
         echo "\">
         <div class=\"clear-fix\"></div>
         <label for=\"end\">Until</label>
@@ -79,7 +79,7 @@ class __TwigTemplate_24e05d2ae69f2973af667310a71d622d7b29db5c9fcf4d1e8564e4c2996
         // line 27
         echo twig_escape_filter($this->env, (isset($context["end"]) ? $context["end"] : $this->getContext($context, "end")), "html", null, true);
         echo "\" placeholder=\"e.g. ";
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "dd.mm.YYYY"), "html", null, true);
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "d.m.Y"), "html", null, true);
         echo "\">
         <div class=\"clear-fix\"></div>
         <label for=\"limit\">Limit</label>
@@ -118,7 +118,7 @@ class __TwigTemplate_24e05d2ae69f2973af667310a71d622d7b29db5c9fcf4d1e8564e4c2996
 
     public function getTemplateName()
     {
-        return "WebProfilerBundle:Profiler:search.html.twig";
+        return "@WebProfiler/Profiler/search.html.twig";
     }
 
     public function isTraitable()

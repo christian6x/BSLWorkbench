@@ -13,6 +13,7 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
             'top_c' => array($this, 'block_top_c'),
+            'mid_c' => array($this, 'block_mid_c'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
         );
@@ -66,18 +67,19 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
         // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/templatemo_style.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" media=\"screen\">
+        
         <script src=\"";
-        // line 25
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/vendor/modernizr-2.6.2.min.js"), "html", null, true);
         echo "\"></script>
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         ";
-        // line 27
-        $this->env->loadTemplate("BraincraftedBootstrapBundle::ie8-support.html.twig")->display($context);
         // line 28
+        $this->env->loadTemplate("BraincraftedBootstrapBundle::ie8-support.html.twig")->display($context);
+        // line 29
         echo "        ";
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 29
+        // line 30
         echo "    </head>
     <body>
     <!-- HEADER -->
@@ -88,7 +90,7 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
                     <div class=\"col-md-3 col-sm-2 logo\">
                         <a href=\"#\" title=\"BSL Logo\">
                             <img src=\"";
-        // line 38
+        // line 39
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/bsl_logo.png"), "html", null, true);
         echo "\" alt=\"BSL\">
                         </a>
@@ -97,28 +99,28 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
                         <nav class=\"main-menu hidden-xs\">
                             <ul>
                                 <li><a href=\"";
-        // line 44
+        // line 45
         echo $this->env->getExtension('routing')->getPath("_homepage");
         echo "\">Home</a></li>
                                 ";
-        // line 45
+        // line 46
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 46
+            // line 47
             echo "                                    <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("com_homepage");
             echo "\">Coms</a></li>
                                 ";
         }
-        // line 48
+        // line 49
         echo "                            </ul>
                         </nav>
                     </div>
                     <div class=\"col-md-2 col-sm-2 col-xs-12\">                           
                         <ul class=\"social-top\">
                             ";
-        // line 53
+        // line 54
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 54
+            // line 55
             echo "                                <li>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo "<a href=\"";
@@ -128,21 +130,21 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
             echo "</span></a></li>
                             ";
         } else {
-            // line 56
+            // line 57
             echo "                                <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                                 <li><a href=\"";
-            // line 57
+            // line 58
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                             ";
         }
-        // line 58
+        // line 59
         echo "  
                         </ul>
                     </div>
@@ -157,12 +159,17 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     
     <!-- TOP CONTENT -->
     ";
-        // line 71
+        // line 72
         $this->displayBlock('top_c', $context, $blocks);
-        // line 84
-        echo "
-    
-
+        // line 85
+        echo "        <div class=\"content-section\" id=\"middle-content\">
+            <div class=\"container\">
+    ";
+        // line 87
+        $this->displayBlock('mid_c', $context, $blocks);
+        // line 105
+        echo "           </div> 
+        </div> 
     <!-- FOOTER -->
     <footer class=\"site-footer\">
         <div class=\"container\">
@@ -175,40 +182,40 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     </footer> <!-- .site-footer -->
         
         ";
-        // line 98
+        // line 118
         $this->displayBlock('body', $context, $blocks);
-        // line 99
+        // line 119
         echo "        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
         <script src=\"";
-        // line 100
+        // line 120
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src=\"";
-        // line 102
+        // line 122
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 103
+        // line 123
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/vendor/jquery-1.10.1.min.js"), "html", null, true);
         echo "\"></script>
         <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\\/script>')</script>
         <script src=\"";
-        // line 105
+        // line 125
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 106
+        // line 126
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 107
+        // line 127
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/templatemo_custom.js"), "html", null, true);
         echo "\"></script> 
         ";
-        // line 108
+        // line 128
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 109
+        // line 129
         echo "    </body>
 </html>
 ";
@@ -220,15 +227,15 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
         echo "BSL Workbench";
     }
 
-    // line 28
+    // line 29
     public function block_stylesheets($context, array $blocks = array())
     {
     }
 
-    // line 71
+    // line 72
     public function block_top_c($context, array $blocks = array())
     {
-        // line 72
+        // line 73
         echo "    <div class=\"top-c\">
         <div class=\"container\">
             <div class=\"row\">
@@ -243,12 +250,35 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     ";
     }
 
-    // line 98
+    // line 87
+    public function block_mid_c($context, array $blocks = array())
+    {
+        // line 88
+        echo "
+                <div class=\"row\">
+                    <div class=\"col-md-3 col-xs-6 text-center\">
+
+                    </div> 
+                    <div class=\"col-md-3 col-xs-6 text-center\">
+
+                    </div> 
+                    <div class=\"col-md-3 col-xs-6 text-center\">
+
+                    </div> 
+                    <div class=\"col-md-3 col-xs-6 text-center\">
+
+                    </div>
+                </div>
+     
+    ";
+    }
+
+    // line 118
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 108
+    // line 128
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -265,6 +295,6 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
 
     public function getDebugInfo()
     {
-        return array (  252 => 108,  247 => 98,  232 => 72,  229 => 71,  224 => 28,  218 => 4,  212 => 109,  210 => 108,  206 => 107,  202 => 106,  198 => 105,  193 => 103,  189 => 102,  184 => 100,  181 => 99,  179 => 98,  163 => 84,  161 => 71,  146 => 58,  139 => 57,  132 => 56,  122 => 54,  120 => 53,  113 => 48,  107 => 46,  105 => 45,  101 => 44,  92 => 38,  81 => 29,  78 => 28,  76 => 27,  71 => 25,  67 => 24,  62 => 22,  56 => 19,  47 => 13,  41 => 10,  35 => 7,  29 => 4,  24 => 1,);
+        return array (  282 => 128,  277 => 118,  257 => 88,  254 => 87,  239 => 73,  236 => 72,  231 => 29,  225 => 4,  219 => 129,  217 => 128,  213 => 127,  209 => 126,  205 => 125,  200 => 123,  196 => 122,  191 => 120,  188 => 119,  186 => 118,  171 => 105,  169 => 87,  165 => 85,  163 => 72,  148 => 59,  141 => 58,  134 => 57,  124 => 55,  122 => 54,  115 => 49,  109 => 47,  107 => 46,  103 => 45,  94 => 39,  83 => 30,  80 => 29,  78 => 28,  73 => 26,  68 => 24,  63 => 22,  57 => 19,  48 => 13,  42 => 10,  36 => 7,  30 => 4,  25 => 1,);
     }
 }

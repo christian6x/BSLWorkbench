@@ -82,7 +82,8 @@ class __TwigTemplate_b8ea91237724236d6e125d95b0e10137e70243e4be4c159110d2d688a74
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
             echo "
                             ";
-        } elseif (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "get", array(0 => "_route"), "method") == "fos_user_registration_register")) {
+        } elseif (($this->getAttribute($this->getAttribute(        // line 18
+(isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "get", array(0 => "_route"), "method") == "fos_user_registration_register")) {
             // line 19
             echo "                                ";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
@@ -119,6 +120,6 @@ class __TwigTemplate_b8ea91237724236d6e125d95b0e10137e70243e4be4c159110d2d688a74
 
     public function getDebugInfo()
     {
-        return array (  106 => 22,  98 => 23,  96 => 22,  93 => 21,  87 => 19,  82 => 17,  78 => 16,  75 => 15,  69 => 14,  60 => 11,  55 => 10,  50 => 9,  46 => 8,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  107 => 22,  99 => 23,  97 => 22,  94 => 21,  88 => 19,  86 => 18,  82 => 17,  78 => 16,  75 => 15,  69 => 14,  60 => 11,  55 => 10,  50 => 9,  46 => 8,  40 => 4,  37 => 3,  11 => 1,);
     }
 }

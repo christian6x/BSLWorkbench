@@ -1,6 +1,6 @@
 <?php
 
-/* DebugBundle:Profiler:dump.html.twig */
+/* @Debug/Profiler/dump.html.twig */
 class __TwigTemplate_7d131ba1e3f15d84e464a050c3c60466bdc1522eda426fe8bef5cbaa11554529 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -183,85 +183,96 @@ class __TwigTemplate_7d131ba1e3f15d84e464a050c3c60466bdc1522eda426fe8bef5cbaa115
         }
     </style>
 
-    <ul class=\"alt\">
-        ";
-        // line 73
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "getDumps", array(0 => "html"), "method"));
-        foreach ($context['_seq'] as $context["_key"] => $context["dump"]) {
-            // line 74
-            echo "        <li class=\"sf-dump sf-reset\">
-            in
+    ";
+        // line 72
+        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "dumpsCount", array())) {
+            // line 73
+            echo "        <ul class=\"alt\">
             ";
-            // line 76
-            if ($this->getAttribute($context["dump"], "line", array())) {
-                // line 77
-                echo "                ";
-                $context["link"] = $this->env->getExtension('code')->getFileLink($this->getAttribute($context["dump"], "file", array()), $this->getAttribute($context["dump"], "line", array()));
-                // line 78
-                echo "                ";
-                if ((isset($context["link"]) ? $context["link"] : $this->getContext($context, "link"))) {
-                    // line 79
-                    echo "                    <a href=\"";
-                    echo twig_escape_filter($this->env, (isset($context["link"]) ? $context["link"] : $this->getContext($context, "link")), "html", null, true);
-                    echo "\" title=\"";
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "file", array()), "html", null, true);
-                    echo "\">";
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "name", array()), "html", null, true);
-                    echo "</a>
+            // line 74
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "getDumps", array(0 => "html"), "method"));
+            foreach ($context['_seq'] as $context["_key"] => $context["dump"]) {
+                // line 75
+                echo "            <li class=\"sf-dump sf-reset\">
+                in
                 ";
+                // line 77
+                if ($this->getAttribute($context["dump"], "line", array())) {
+                    // line 78
+                    echo "                    ";
+                    $context["link"] = $this->env->getExtension('code')->getFileLink($this->getAttribute($context["dump"], "file", array()), $this->getAttribute($context["dump"], "line", array()));
+                    // line 79
+                    echo "                    ";
+                    if ((isset($context["link"]) ? $context["link"] : $this->getContext($context, "link"))) {
+                        // line 80
+                        echo "                        <a href=\"";
+                        echo twig_escape_filter($this->env, (isset($context["link"]) ? $context["link"] : $this->getContext($context, "link")), "html", null, true);
+                        echo "\" title=\"";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "file", array()), "html", null, true);
+                        echo "\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "name", array()), "html", null, true);
+                        echo "</a>
+                    ";
+                    } else {
+                        // line 82
+                        echo "                        <abbr title=\"";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "file", array()), "html", null, true);
+                        echo "\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "name", array()), "html", null, true);
+                        echo "</abbr>
+                    ";
+                    }
+                    // line 84
+                    echo "                ";
                 } else {
-                    // line 81
-                    echo "                    <abbr title=\"";
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "file", array()), "html", null, true);
-                    echo "\">";
+                    // line 85
+                    echo "                    ";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "name", array()), "html", null, true);
-                    echo "</abbr>
+                    echo "
                 ";
                 }
-                // line 83
-                echo "            ";
-            } else {
-                // line 84
-                echo "                ";
-                echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "name", array()), "html", null, true);
-                echo "
-            ";
-            }
-            // line 86
-            echo "            line ";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "line", array()), "html", null, true);
-            echo ":
-            <a onclick=\"Sfdump.toggle(this)\">▶</a>
-            <span class=\"sf-dump-compact\">
-            ";
-            // line 89
-            if ($this->getAttribute($context["dump"], "fileExcerpt", array())) {
-                echo $this->getAttribute($context["dump"], "fileExcerpt", array());
-            } else {
-                echo $this->env->getExtension('code')->fileExcerpt($this->getAttribute($context["dump"], "file", array()), $this->getAttribute($context["dump"], "line", array()));
-            }
-            // line 90
-            echo "            </span>
+                // line 87
+                echo "                line ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["dump"], "line", array()), "html", null, true);
+                echo ":
+                <a onclick=\"Sfdump.toggle(this)\">▶</a>
+                <span class=\"sf-dump-compact\">
+                ";
+                // line 90
+                if ($this->getAttribute($context["dump"], "fileExcerpt", array())) {
+                    echo $this->getAttribute($context["dump"], "fileExcerpt", array());
+                } else {
+                    echo $this->env->getExtension('code')->fileExcerpt($this->getAttribute($context["dump"], "file", array()), $this->getAttribute($context["dump"], "line", array()));
+                }
+                // line 91
+                echo "                </span>
 
+                ";
+                // line 93
+                echo $this->getAttribute($context["dump"], "data", array());
+                echo "
+            </li>
             ";
-            // line 92
-            echo $this->getAttribute($context["dump"], "data", array());
-            echo "
-        </li>
-        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dump'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 96
+            echo "        </ul>
+    ";
+        } else {
+            // line 98
+            echo "        <p>
+            <em>No dumped variable</em>
+        </p>
+    ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dump'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 95
-        echo "    </ul>
-";
     }
 
     public function getTemplateName()
     {
-        return "DebugBundle:Profiler:dump.html.twig";
+        return "@Debug/Profiler/dump.html.twig";
     }
 
     public function isTraitable()
@@ -271,6 +282,6 @@ class __TwigTemplate_7d131ba1e3f15d84e464a050c3c60466bdc1522eda426fe8bef5cbaa115
 
     public function getDebugInfo()
     {
-        return array (  258 => 95,  249 => 92,  245 => 90,  239 => 89,  232 => 86,  226 => 84,  223 => 83,  215 => 81,  205 => 79,  202 => 78,  199 => 77,  197 => 76,  193 => 74,  189 => 73,  169 => 55,  166 => 54,  158 => 49,  153 => 46,  151 => 45,  149 => 44,  147 => 43,  144 => 41,  141 => 40,  136 => 37,  134 => 36,  131 => 35,  127 => 33,  118 => 30,  113 => 29,  107 => 27,  104 => 26,  96 => 24,  86 => 22,  83 => 21,  80 => 20,  78 => 19,  74 => 17,  70 => 16,  65 => 13,  63 => 12,  60 => 11,  55 => 9,  52 => 8,  49 => 7,  47 => 6,  44 => 5,  41 => 4,  38 => 3,  11 => 1,);
+        return array (  266 => 98,  262 => 96,  253 => 93,  249 => 91,  243 => 90,  236 => 87,  230 => 85,  227 => 84,  219 => 82,  209 => 80,  206 => 79,  203 => 78,  201 => 77,  197 => 75,  193 => 74,  190 => 73,  188 => 72,  169 => 55,  166 => 54,  158 => 49,  153 => 46,  151 => 45,  149 => 44,  147 => 43,  144 => 41,  141 => 40,  136 => 37,  134 => 36,  131 => 35,  127 => 33,  118 => 30,  113 => 29,  107 => 27,  104 => 26,  96 => 24,  86 => 22,  83 => 21,  80 => 20,  78 => 19,  74 => 17,  70 => 16,  65 => 13,  63 => 12,  60 => 11,  55 => 9,  52 => 8,  49 => 7,  47 => 6,  44 => 5,  41 => 4,  38 => 3,  11 => 1,);
     }
 }

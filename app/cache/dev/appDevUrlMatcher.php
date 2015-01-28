@@ -137,7 +137,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'ComBundle\\Controller\\DefaultController::indexAction',  '_route' => 'com_homepage',);
             }
 
-            if (0 === strpos($pathinfo, '/com/ips-square-suggest')) {
+            if (0 === strpos($pathinfo, '/com/ips-square-s')) {
                 // com_ips_square_suggest
                 if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
                     if (substr($pathinfo, -1) !== '/') {
@@ -145,6 +145,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
+                }
+
+                // com_ips_square_search
+                if (0 === strpos($pathinfo, '/com/ips-square-search') && preg_match('#^/com/ips\\-square\\-search(?:/(?P<items>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'com_ips_square_search')), array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSearchController::renderResultAction',  'items' => 100,  'page' => 1,));
                 }
 
                 // square_suggest

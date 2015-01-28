@@ -1,6 +1,6 @@
 <?php
 
-/* WebProfilerBundle:Profiler:toolbar.css.twig */
+/* @WebProfiler/Profiler/toolbar.css.twig */
 class __TwigTemplate_feb235f0d2a7033e22c4cee3f04fed3f1ba658dcea4f0f10cafd69cddfc27b70 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -69,14 +69,25 @@ class __TwigTemplate_feb235f0d2a7033e22c4cee3f04fed3f1ba658dcea4f0f10cafd69cddfc
     cursor: help;
 }
 .sf-toolbarreset span,
-.sf-toolbarreset div {
+.sf-toolbarreset div,
+.sf-toolbarreset td,
+.sf-toolbarreset th {
     font-size: 11px;
 }
 .sf-toolbarreset img {
     width: auto;
     display: inline;
 }
-
+.sf-toolbarreset table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    table-layout: auto;
+}
 .sf-toolbarreset .hide-button {
     display: block;
     position: absolute;
@@ -307,12 +318,11 @@ class __TwigTemplate_feb235f0d2a7033e22c4cee3f04fed3f1ba658dcea4f0f10cafd69cddfc
     overflow-y: auto;
 }
 
-table.sf-toolbar-ajax-requests {
-    border-collapse: collapse;
-}
 .sf-toolbar-ajax-requests th, .sf-toolbar-ajax-requests td {
     border-bottom: 1px solid #ddd;
     padding: 0 4px;
+    color: #2f2f2f;
+    background-color: #fff;
 }
 .sf-toolbar-ajax-requests th {
     background-color: #eee;
@@ -358,9 +368,9 @@ table.sf-toolbar-ajax-requests {
 
 /***** Override the setting when the toolbar is on the top *****/
 ";
-        // line 342
+        // line 352
         if (((isset($context["position"]) ? $context["position"] : $this->getContext($context, "position")) == "top")) {
-            // line 343
+            // line 353
             echo "    .sf-minitoolbar {
         top: 0;
         bottom: auto;
@@ -402,12 +412,12 @@ table.sf-toolbar-ajax-requests {
     }
 ";
         }
-        // line 383
+        // line 393
         echo "
 ";
-        // line 384
+        // line 394
         if ( !(isset($context["floatable"]) ? $context["floatable"] : $this->getContext($context, "floatable"))) {
-            // line 385
+            // line 395
             echo "    .sf-toolbarreset {
         position: static;
         background: #cbcbcb;
@@ -419,7 +429,7 @@ table.sf-toolbar-ajax-requests {
     }
 ";
         }
-        // line 395
+        // line 405
         echo "
 /***** Media query *****/
 @media screen and (max-width: 779px) {
@@ -469,7 +479,7 @@ table.sf-toolbar-ajax-requests {
 
     public function getTemplateName()
     {
-        return "WebProfilerBundle:Profiler:toolbar.css.twig";
+        return "@WebProfiler/Profiler/toolbar.css.twig";
     }
 
     public function isTraitable()
@@ -479,6 +489,6 @@ table.sf-toolbar-ajax-requests {
 
     public function getDebugInfo()
     {
-        return array (  423 => 395,  411 => 385,  409 => 384,  406 => 383,  364 => 343,  362 => 342,  19 => 1,);
+        return array (  433 => 405,  421 => 395,  419 => 394,  416 => 393,  374 => 353,  372 => 352,  19 => 1,);
     }
 }

@@ -1,9 +1,15 @@
 com_homepage:
     path:     /main/
     defaults: { _controller: ComBundle:Default:index }
+    
 com_ips_square_suggest:
     path:     /ips-square-suggest/
     defaults: { _controller: ComBundle:IpsSquareSuggest:render }
+
+com_ips_square_search:
+    pattern:  /ips-square-search/{items}/{page}
+    defaults: { _controller: ComBundle:IpsSquareSearch:renderResult, items: 100, page : 1}
+
 square_suggest:
     path: /ips-square-suggest/suggestion
     defaults: { _controller: ComBundle:IpsSquareSuggest:suggest }
