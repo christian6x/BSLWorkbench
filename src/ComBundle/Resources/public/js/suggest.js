@@ -1,8 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 callSuggest($('#search_suggest'));
 jQuery(document).ready(function()
 {   
@@ -29,7 +25,6 @@ function callSuggest(obj)
             if(result.suggestionsArray)
             {
                 var suggestions = result.suggestionsArray;
-                console.log(suggestions);
                 $('#search_suggest').autocomplete({
                     position: { my: "right top", at: "right bottom" },
                     autoFocus: true,
@@ -37,14 +32,63 @@ function callSuggest(obj)
                     minLength: 0
                 });
                 $( "#search_suggest" ).autocomplete({
-//                            source: function( request, response ) {
-//                            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-//                            response( $.grep( suggestions, function( item ){
-//                            return matcher.test( item );
-//                            }) );
-//                            }
-                            source : suggestions
-                            });      
+                            source: function( request, response ) {
+                            
+                            var splitTerm = (request.term).split(" ");
+                            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( (request.term).trim() ), "i" );
+                            var a = $.grep( suggestions, function( item ){
+                                return matcher.test( item );
+                            }) ;
+                            if(a.length == 0)
+                            {
+                                matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( splitTerm[splitTerm.length - 1] ), "i" );
+                                a = $.grep( suggestions, function( item ){
+                                return matcher.test( item );
+                                }) ;
+                                response( $.grep( suggestions, function( item ){
+                                return matcher.test( item );
+                            }) );
+                            }
+                            else
+                            {
+                                    response( $.grep( suggestions, function( item ){
+                                return matcher.test( item );
+                            }) );
+                            }
+                            },
+                            focus: function( event, ui ) 
+                            {
+                                return false;
+                            },
+                            select: function( event, ui ) 
+                            {
+                                var oldLabel = (obj.value).split(/\s+/);
+                                var oldString = '';
+                                for(i = 0; i < (oldLabel.length-1); i++)
+                                {
+                                    oldString += oldLabel[i] + " ";
+                                }
+                                
+                                $('#search_suggest').val(doSomethingNasty(oldString,ui.item.value,suggestions));
+                                return false;
+                            
+                            }
+                            }).data('uiAutocomplete')._renderItem = function( ul, item ) {
+                        var srchTerm = $.trim(this.term).split(/\s+/).join ('|');
+                        var strNewLabel = item.label;
+                        var oldLabel = (this.term).split(/\s+/);
+                        var oldString = '';
+                        for(i = 0; i < (oldLabel.length-1); i++)
+                        {
+                            oldString += oldLabel[i] + " ";
+                        }
+                        regexp = new RegExp ('(' + srchTerm + ')', "ig");
+                        var strNewLabel = strNewLabel.replace(regexp,"<span style='font-weight:bold;color:Blue;'>$1</span>");
+                        return $( "<li></li>" )
+                            .data( "item.autocomplete", item )
+                            .append( "<a>" + strNewLabel + "</a>" )
+                            .appendTo( ul );
+                            };      
             }
             else
             {
@@ -53,15 +97,18 @@ function callSuggest(obj)
                 source : suggestions
                 });
             }
-            if(result.request)
-            {
-                //console.log(result.request);
-             }
-
-            if(result.fields)
-            {
-                //console.log(result.fields);
-            }
-
         });
+    }
+    
+    function doSomethingNasty(oldInput,currentSuggestion,suggestions)
+    {  
+        var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( (oldInput).trim() ), "i" );
+                            var a = $.grep( suggestions, function( item ){
+                                return matcher.test( item );
+                            }) ;    
+        regexp = new RegExp ('(' + oldInput + ')', "ig");
+        if(a.length == 0)
+            return oldInput + currentSuggestion;
+        else
+            return currentSuggestion;
     }
