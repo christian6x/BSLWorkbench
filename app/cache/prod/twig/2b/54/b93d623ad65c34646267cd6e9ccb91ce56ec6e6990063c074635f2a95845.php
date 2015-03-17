@@ -37,11 +37,9 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
         echo "\" rel=\"stylesheet\" media=\"screen\"> 
         
             <!-- Bootstrap Stylesheet -->
-        <link rel=\"stylesheet\" href=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap.min.css"), "html", null, true);
-        echo "\">
-
+";
+        // line 11
+        echo "        <link rel=\"stylesheet\" type=\"text/css\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css\">
         <!-- Animate -->
         <link rel=\"stylesheet\" href=\"";
         // line 13
@@ -83,6 +81,7 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
         echo "    </head>
     <body>
     <!-- HEADER -->
+  
     <header class=\"site-header\">
         <div class=\"container\">
             <div class=\"row\">
@@ -90,37 +89,79 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
                     <div class=\"col-md-3 col-sm-2 logo\">
                         <a href=\"#\" title=\"BSL Logo\">
                             <img src=\"";
-        // line 39
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/bsl_logo.png"), "html", null, true);
         echo "\" alt=\"BSL\">
                         </a>
                     </div>
                     <div class=\"col-md-7 col-sm-8\">
                         <nav class=\"main-menu hidden-xs\">
-                            <ul>
-                                <li><a href=\"";
-        // line 45
+";
+        // line 51
+        echo "                        </nav>
+                            
+                            
+                            <nav class=\"main-menu navbar navbar-default navbar-blue\" role=\"navigation\">
+     <div class=\"container-fluid\" id=\"navfluid\">
+       <div class=\"navbar-header\">
+       <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#navigationbar\">
+       <span class=\"sr-only\">Toggle navigation</span>
+       <span class=\"icon-bar\"></span>
+       <span class=\"icon-bar\"></span>
+       <span class=\"icon-bar\"></span>
+      </button>
+     <a class=\"navbar-brand\" href=\"";
+        // line 63
+        echo $this->env->getExtension('routing')->getPath("_homepage");
+        echo "\">BSL</a>
+    </div>
+<div class=\"collapse navbar-collapse\" id=\"navigationbar\" >
+<ul class=\"nav navbar-nav\">
+   <li><a href=\"";
+        // line 67
         echo $this->env->getExtension('routing')->getPath("_homepage");
         echo "\">Home</a></li>
-                                ";
-        // line 46
+   ";
+        // line 68
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 47
-            echo "                                    <li><a href=\"";
+            // line 69
+            echo "        <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"";
             echo $this->env->getExtension('routing')->getPath("com_homepage");
-            echo "\">Coms</a></li>
-                                ";
+            echo "\">COMS<span class=\"caret\"></span></a>
+          <ul class=\"dropdown-menu\">
+            <li><a href=\"";
+            // line 71
+            echo $this->env->getExtension('routing')->getPath("com_ips_square_suggest");
+            echo "\">ips-square-suggest</a></li>
+            <li><a href=\"";
+            // line 72
+            echo $this->env->getExtension('routing')->getPath("com_ips_file_post");
+            echo "\">ips-file-post</a></li>
+            <li><a href=\"";
+            // line 73
+            echo $this->env->getExtension('routing')->getPath("com_ips_untrusted_fuzzy_search");
+            echo "\">ips-untrusted-fuzzy-search</a></li>
+          </ul>
+        </li>
+   ";
         }
-        // line 49
-        echo "                            </ul>
-                        </nav>
+        // line 77
+        echo "
+</ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+                            
+                            
+                            
+                            
                     </div>
                     <div class=\"col-md-2 col-sm-2 col-xs-12\">                           
                         <ul class=\"social-top\">
                             ";
-        // line 54
+        // line 89
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 55
+            // line 90
             echo "                                <li>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo "<a href=\"";
@@ -130,44 +171,43 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
             echo "</span></a></li>
                             ";
         } else {
-            // line 57
+            // line 92
             echo "                                <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                                 <li><a href=\"";
-            // line 58
+            // line 93
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\"><span class=\"hidden-xs\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
             echo "</span></a></li>
                             ";
         }
-        // line 59
+        // line 94
         echo "  
                         </ul>
                     </div>
                 </div>
-                <div class=\"text-right visible-xs\">
-                    <a href=\"#\" id=\"mobile_menu\"><span class=\"fa fa-bars\"></span></a>
-                </div>
-            </div>
+           ";
+        // line 101
+        echo "            </div>
         </div>
     </header> 
     
     
     <!-- TOP CONTENT -->
     ";
-        // line 72
+        // line 107
         $this->displayBlock('top_c', $context, $blocks);
-        // line 85
+        // line 120
         echo "        <div class=\"content-section\" id=\"middle-content\">
             <div class=\"container\">
     ";
-        // line 87
+        // line 122
         $this->displayBlock('mid_c', $context, $blocks);
-        // line 105
+        // line 140
         echo "           </div> 
         </div> 
     <!-- FOOTER -->
@@ -182,40 +222,31 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     </footer> <!-- .site-footer -->
         
         ";
-        // line 118
+        // line 153
         $this->displayBlock('body', $context, $blocks);
-        // line 119
+        // line 154
         echo "        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-        <script src=\"";
-        // line 120
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
-        echo "\"></script>
+        <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
-        <script src=\"";
-        // line 122
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
-        echo "\"></script>
-        <script src=\"";
-        // line 123
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/vendor/jquery-1.10.1.min.js"), "html", null, true);
-        echo "\"></script>
-        <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\\/script>')</script>
-        <script src=\"";
-        // line 125
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
-        echo "\"></script>
-        <script src=\"";
-        // line 126
+";
+        // line 158
+        echo "        <script src=\"//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js\"></script>
+";
+        // line 161
+        echo "        <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\\/script>')</script>
+";
+        // line 163
+        echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 127
+        // line 164
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/templatemo_custom.js"), "html", null, true);
         echo "\"></script> 
         ";
-        // line 128
+        // line 165
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 129
+        // line 166
         echo "    </body>
 </html>
 ";
@@ -232,10 +263,10 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     {
     }
 
-    // line 72
+    // line 107
     public function block_top_c($context, array $blocks = array())
     {
-        // line 73
+        // line 108
         echo "    <div class=\"top-c\">
         <div class=\"container\">
             <div class=\"row\">
@@ -250,10 +281,10 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     ";
     }
 
-    // line 87
+    // line 122
     public function block_mid_c($context, array $blocks = array())
     {
-        // line 88
+        // line 123
         echo "
                 <div class=\"row\">
                     <div class=\"col-md-3 col-xs-6 text-center\">
@@ -273,12 +304,12 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
     ";
     }
 
-    // line 118
+    // line 153
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 128
+    // line 165
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -295,6 +326,6 @@ class __TwigTemplate_2b54b93d623ad65c34646267cd6e9ccb91ce56ec6e6990063c074635f2a
 
     public function getDebugInfo()
     {
-        return array (  282 => 128,  277 => 118,  257 => 88,  254 => 87,  239 => 73,  236 => 72,  231 => 29,  225 => 4,  219 => 129,  217 => 128,  213 => 127,  209 => 126,  205 => 125,  200 => 123,  196 => 122,  191 => 120,  188 => 119,  186 => 118,  171 => 105,  169 => 87,  165 => 85,  163 => 72,  148 => 59,  141 => 58,  134 => 57,  124 => 55,  122 => 54,  115 => 49,  109 => 47,  107 => 46,  103 => 45,  94 => 39,  83 => 30,  80 => 29,  78 => 28,  73 => 26,  68 => 24,  63 => 22,  57 => 19,  48 => 13,  42 => 10,  36 => 7,  30 => 4,  25 => 1,);
+        return array (  313 => 165,  308 => 153,  288 => 123,  285 => 122,  270 => 108,  267 => 107,  262 => 29,  256 => 4,  250 => 166,  248 => 165,  244 => 164,  239 => 163,  236 => 161,  233 => 158,  228 => 154,  226 => 153,  211 => 140,  209 => 122,  205 => 120,  203 => 107,  195 => 101,  189 => 94,  182 => 93,  175 => 92,  165 => 90,  163 => 89,  149 => 77,  142 => 73,  138 => 72,  134 => 71,  128 => 69,  126 => 68,  122 => 67,  115 => 63,  101 => 51,  93 => 40,  81 => 30,  78 => 29,  76 => 28,  71 => 26,  66 => 24,  61 => 22,  55 => 19,  46 => 13,  42 => 11,  36 => 7,  30 => 4,  25 => 1,);
     }
 }

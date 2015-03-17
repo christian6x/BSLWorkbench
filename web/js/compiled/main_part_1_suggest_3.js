@@ -37,14 +37,17 @@ function callSuggest(obj)
                     minLength: 0
                 });
                 $( "#search_suggest" ).autocomplete({
-//                            source: function( request, response ) {
-//                            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-//                            response( $.grep( suggestions, function( item ){
-//                            return matcher.test( item );
-//                            }) );
-//                            }
+                            source: function( request, response ) {
+                                console.log("Request : " + request);
+                                console.log("Response : " + response);
+                            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+                            response( $.grep( suggestions, function( item ){
+                            return matcher.test( item );
+                            }) );
+                            }
                             //source : suggestions
-                            });      
+                            });
+                                    
             }
             else
             {

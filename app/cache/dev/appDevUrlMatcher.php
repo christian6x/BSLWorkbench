@@ -137,31 +137,57 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'ComBundle\\Controller\\DefaultController::indexAction',  '_route' => 'com_homepage',);
             }
 
-            if (0 === strpos($pathinfo, '/com/ips-square-s')) {
-                // com_ips_square_suggest
-                if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'com_ips_square_suggest');
+            if (0 === strpos($pathinfo, '/com/ips-')) {
+                if (0 === strpos($pathinfo, '/com/ips-square-s')) {
+                    // com_ips_square_suggest
+                    if (rtrim($pathinfo, '/') === '/com/ips-square-suggest') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'com_ips_square_suggest');
+                        }
+
+                        return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
                     }
 
-                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::renderAction',  '_route' => 'com_ips_square_suggest',);
-                }
-
-                // com_ips_square_search
-                if (0 === strpos($pathinfo, '/com/ips-square-search') && preg_match('#^/com/ips\\-square\\-search(?:/(?P<items>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'com_ips_square_search')), array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSearchController::renderResultAction',  'items' => 100,  'page' => 1,));
-                }
-
-                // square_suggest
-                if ($pathinfo === '/com/ips-square-suggest/suggestion') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_square_suggest;
+                    // com_ips_square_search
+                    if (0 === strpos($pathinfo, '/com/ips-square-search') && preg_match('#^/com/ips\\-square\\-search(?:/(?P<items>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'com_ips_square_search')), array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSearchController::renderResultAction',  'items' => 100,  'page' => 1,));
                     }
 
-                    return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::suggestAction',  '_route' => 'square_suggest',);
+                    // square_suggest
+                    if ($pathinfo === '/com/ips-square-suggest/suggestion') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_square_suggest;
+                        }
+
+                        return array (  '_controller' => 'ComBundle\\Controller\\IpsSquareSuggestController::suggestAction',  '_route' => 'square_suggest',);
+                    }
+                    not_square_suggest:
+
                 }
-                not_square_suggest:
+
+                if (0 === strpos($pathinfo, '/com/ips-file-post')) {
+                    // com_ips_file_post
+                    if (rtrim($pathinfo, '/') === '/com/ips-file-post') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'com_ips_file_post');
+                        }
+
+                        return array (  '_controller' => 'ComBundle\\Controller\\IpsFilePostController::renderAction',  '_route' => 'com_ips_file_post',);
+                    }
+
+                    // comFilePost
+                    if ($pathinfo === '/com/ips-file-post/post') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_comFilePost;
+                        }
+
+                        return array (  '_controller' => 'ComBundle\\Controller\\IpsFilePostController::postAction',  '_route' => 'comFilePost',);
+                    }
+                    not_comFilePost:
+
+                }
 
             }
 

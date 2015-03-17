@@ -1,6 +1,6 @@
 <?php
 
-/* @Swiftmailer/Collector/swiftmailer.html.twig */
+/* SwiftmailerBundle:Collector:swiftmailer.html.twig */
 class __TwigTemplate_62dea6b2c2e6ce06081a4cbc74240f829d3a35240bb6a82d36ce61febfaad1cf extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -287,7 +287,7 @@ class __TwigTemplate_62dea6b2c2e6ce06081a4cbc74240f829d3a35240bb6a82d36ce61febfa
 
     public function getTemplateName()
     {
-        return "@Swiftmailer/Collector/swiftmailer.html.twig";
+        return "SwiftmailerBundle:Collector:swiftmailer.html.twig";
     }
 
     public function isTraitable()

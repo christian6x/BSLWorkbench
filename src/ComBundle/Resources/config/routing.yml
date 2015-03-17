@@ -16,3 +16,22 @@ square_suggest:
     requirements:
         _method: POST
     
+com_ips_file_post:
+    path:     /ips-file-post/
+    defaults: { _controller: ComBundle:IpsFilePost:render }
+    
+comFilePost:
+    path: /ips-file-post/post
+    defaults: { _controller: ComBundle:IpsFilePost:post }
+    requirements:
+        _method: POST
+
+com_ips_untrusted_fuzzy_search:
+    path:     /ips-untrusted-fuzzy-search/
+    defaults: { _controller: ComBundle:IpsUntrustedFuzzySearch:render }
+
+comUntrustedFuzzySearch:
+    path: /ips-untrusted-fuzzy-search/search
+    defaults: { _controller: ComBundle:IpsUntrustedFuzzySearch:search, refresh: YES , items: 100, page : 1}
+    requirements:
+        _method: POST

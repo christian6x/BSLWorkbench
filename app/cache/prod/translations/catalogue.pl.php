@@ -124,6 +124,10 @@ $catalogue = new MessageCatalogue('pl', array (
   'messages' => 
   array (
     'submit.suggest' => 'Szukaj',
+    'submit.context' => 'Kontekst',
+    'submit.comIpsFilePost' => 'Dodaj',
+    'submit.comIpsFuzzySearch' => 'Szukaj',
+    'random.comIpsFilePost' => 'Losowy identyfikator pliku',
   ),
   'FOSUserBundle' => 
   array (

@@ -1,9 +1,26 @@
 
 callSuggest($('#search_suggest'));
 jQuery(document).ready(function()
-{   
+{       
+    
+//    $("#mocz").click(function(event){
+//        console.log("kliked");
+//  //  t = t +1;
+//    $.ajax({
+//       type: "POST",
+//       cache: "false",
+//       dataType: "html",
+//       url: path_to_search,
+//       success: function(data){
+//           console.log("pizda");
+//       $("#mocznik"). .append(data);    
+//       }
+//    });
+//  });
+//    
 $('#search_suggest').keyup(function(key)
 {
+    console.log(key);
     callSuggest(this);
 });
 });
@@ -11,10 +28,12 @@ $('#search_suggest').keyup(function(key)
 function callSuggest(obj)
     {
         var value = obj.value;
+        var context = $('#context_suggest').val();
         $.ajax({
             type: "POST",
+            cache: false,
             url: path_to_controller,
-            data: { "value" : value},
+            data: { "value" : value, "context" : context},
             error: function(XMLHttpRequest, textStatus, errorThrown)
             {
                 alert('Error: ' + errorThrown + '\n' + textStatus);
@@ -25,11 +44,14 @@ function callSuggest(obj)
             if(result.suggestionsArray)
             {
                 var suggestions = result.suggestionsArray;
+                console.log(suggestions);
                 $('#search_suggest').autocomplete({
                     position: { my: "right top", at: "right bottom" },
                     autoFocus: true,
+                    delay: 500,
                     disabled: false,
-                    minLength: 0
+                    minLength: 0,
+                    cache: false
                 });
                 $( "#search_suggest" ).autocomplete({
                             source: function( request, response ) {

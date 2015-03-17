@@ -46,6 +46,10 @@ class __TwigTemplate_2862d32a193bb2a09f42ae3afb2bf9a96958bbb9c2a4d31986efe77027e
         // line 9
         echo $this->env->getExtension('routing')->getPath("com_ips_square_suggest");
         echo "\">ips-square-suggest</a></li>
+                            <li><i class=\"fa fa-check\"></i><a href=\"";
+        // line 10
+        echo $this->env->getExtension('routing')->getPath("com_ips_file_post");
+        echo "\">ips-file-post</a></li>
                         </ul>
                         
                     </div>
@@ -67,6 +71,6 @@ class __TwigTemplate_2862d32a193bb2a09f42ae3afb2bf9a96958bbb9c2a4d31986efe77027e
 
     public function getDebugInfo()
     {
-        return array (  47 => 9,  39 => 3,  36 => 2,  11 => 1,);
+        return array (  51 => 10,  47 => 9,  39 => 3,  36 => 2,  11 => 1,);
     }
 }

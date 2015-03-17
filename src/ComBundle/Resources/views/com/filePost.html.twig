@@ -1,0 +1,41 @@
+{# empty Twig template #}
+{% extends "AppBundle::base.html.twig" %}
+    {% block top_c %}
+        <div class="top-c">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3 class="topc-title">ips-file-post</h3>
+                            
+                            <form id="formFilePost" action="#" method="POST" {{ form_enctype(form) }}>
+                            {# <form  action="{{ path('com_ips_square_search')}}" method="POST" {{ form_enctype(form) }}> #}
+                               {{ form_rest(form) }}
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+                            {#<button id="mocz">sram</button>#}
+    {% endblock %}
+    {#
+    {% block mid_c %}
+           
+                <div class="row">
+                        <div id="mocznik"></div>
+                </div>
+        
+    {% endblock %}
+    #}
+    
+    {% block stylesheets %}
+        {% stylesheets '@ComBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+        {% block javascripts %}
+        {% javascripts '@ComBundle/Resources/public/js/filePost/*' output='js/compiled/filePost.js' %}
+            <script>var path_to_controller = "{{ path('comFilePost') }}";</script>
+            <script type="text/javascript" src="{{ asset_url }}"/></script>
+        {% endjavascripts %}
+    {% endblock %}

@@ -2511,7 +2511,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         ob_start();
         // line 751
         echo "        ";
-        $context["method"] = strtoupper((isset($context["method"]) ? $context["method"] : null));
+        $context["method"] = twig_upper_filter($this->env, (isset($context["method"]) ? $context["method"] : null));
         // line 752
         echo "        ";
         if (twig_in_filter((isset($context["method"]) ? $context["method"] : null), array(0 => "GET", 1 => "POST"))) {
@@ -2613,7 +2613,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         // line 787
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "vars", array()), "name", array()), "html", null, true);
         echo "\" method=\"";
-        echo twig_escape_filter($this->env, strtolower((isset($context["form_method"]) ? $context["form_method"] : null)), "html", null, true);
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, (isset($context["form_method"]) ? $context["form_method"] : null)), "html", null, true);
         echo "\" action=\"";
         echo twig_escape_filter($this->env, (isset($context["action"]) ? $context["action"] : null), "html", null, true);
         echo "\"";

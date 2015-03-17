@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Collector/form.html.twig */
+/* WebProfilerBundle:Collector:form.html.twig */
 class __TwigTemplate_9756bd4364cce929821711908d1694685a1ad9da432a13ebca6a32d5d950f0bf extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -32,7 +32,7 @@ class __TwigTemplate_9756bd4364cce929821711908d1694685a1ad9da432a13ebca6a32d5d95
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_dde72e0d2237251a57c612983496081555fcc9bef4b474e388317929bafb9438"] = $this;
+        $context["__internal_4e8d4cd861844d0192a25fd0bc5a4bde27474fb21fa538f3b25e9e880ff53b43"] = $this;
         // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
@@ -269,7 +269,7 @@ class __TwigTemplate_9756bd4364cce929821711908d1694685a1ad9da432a13ebca6a32d5d95
             foreach ($context['_seq'] as $context["formName"] => $context["formData"]) {
                 // line 188
                 echo "                    ";
-                echo $context["__internal_dde72e0d2237251a57c612983496081555fcc9bef4b474e388317929bafb9438"]->getform_tree_entry($context["formName"], $context["formData"], true);
+                echo $context["__internal_4e8d4cd861844d0192a25fd0bc5a4bde27474fb21fa538f3b25e9e880ff53b43"]->getform_tree_entry($context["formName"], $context["formData"], true);
                 echo "
                 ";
             }
@@ -287,7 +287,7 @@ class __TwigTemplate_9756bd4364cce929821711908d1694685a1ad9da432a13ebca6a32d5d95
             foreach ($context['_seq'] as $context["formName"] => $context["formData"]) {
                 // line 194
                 echo "                ";
-                echo $context["__internal_dde72e0d2237251a57c612983496081555fcc9bef4b474e388317929bafb9438"]->getform_tree_details($context["formName"], $context["formData"], $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data", array()), "forms_by_hash", array()));
+                echo $context["__internal_4e8d4cd861844d0192a25fd0bc5a4bde27474fb21fa538f3b25e9e880ff53b43"]->getform_tree_details($context["formName"], $context["formData"], $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data", array()), "forms_by_hash", array()));
                 echo "
             ";
             }
@@ -1174,7 +1174,7 @@ $context["trace"], "message", array(), "any", true, true)) {
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Collector/form.html.twig";
+        return "WebProfilerBundle:Collector:form.html.twig";
     }
 
     public function isTraitable()

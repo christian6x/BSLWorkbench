@@ -6,17 +6,28 @@
                     <div class="col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <h3 class="topc-title">ips-square-suggest</h3>
                             
-                            <form  action="{{ path('com_ips_square_search')}}" method="POST" {{ form_enctype(form) }}>
+                            <form id="formSearch" action="{{ path('com_ips_square_search')}}" method="POST" {{ form_enctype(form) }}>
                             {# <form  action="{{ path('com_ips_square_search')}}" method="POST" {{ form_enctype(form) }}> #}
                                 {{ form_row(form._token) }}
-                                {{ form_row(form.search, { 'id': 'search_suggest', 'autocomplete': 'off'} ) }}
+                                {{ form_row(form.context, { 'id': 'context_suggest' }) }}
+                                {{ form_row(form.search, { 'id': 'search_suggest', 'attr': {'autocomplete': 'off'}}  ) }}
                                 {{ form_row(form.submit) }}
                             </form>
                     </div>
                 </div>
             </div>
         </div>   
+                            {#<button id="mocz">sram</button>#}
     {% endblock %}
+    
+    {% block mid_c %}
+           
+                <div class="row">
+                        <div id="mocznik"></div>
+                </div>
+        
+    {% endblock %}
+    
     
     {% block stylesheets %}
         {% stylesheets '@ComBundle/Resources/public/css/*' filter='cssrewrite' %}
@@ -26,6 +37,7 @@
     {% block javascripts %}
         {% javascripts '@ComBundle/Resources/public/js/*' output='js/compiled/main.js' %}
             <script>var path_to_controller = "{{ path('square_suggest') }}";</script>
+            <script>var path_to_search = "{{ path('com_ips_square_search')}}";</script>
             <script type="text/javascript" src="{{ asset_url }}"/></script>
         {% endjavascripts %}
     {% endblock %}

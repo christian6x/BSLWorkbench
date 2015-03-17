@@ -12,6 +12,7 @@ class ipsSquareSuggestType extends AbstractType
     {
 
         $builder->add('search', 'search');
+        $builder->add('context','text', array('label'=> 'submit.context', 'translation_domain' => 'messages'));
         $builder->add('submit', 'submit', array('label'=> 'submit.suggest', 'translation_domain' => 'messages'));
         
     }

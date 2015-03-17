@@ -7,8 +7,8 @@
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen"> 
         
             <!-- Bootstrap Stylesheet -->
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
+{#        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">#}
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <!-- Animate -->
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
 
@@ -30,6 +30,7 @@
     </head>
     <body>
     <!-- HEADER -->
+  
     <header class="site-header">
         <div class="container">
             <div class="row">
@@ -41,13 +42,47 @@
                     </div>
                     <div class="col-md-7 col-sm-8">
                         <nav class="main-menu hidden-xs">
-                            <ul>
+{#                            <ul>
                                 <li><a href="{{ path('_homepage')}}">Home</a></li>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     <li><a href="{{ path('com_homepage')}}">Coms</a></li>
                                 {% endif %}
-                            </ul>
+                            </ul>#}
                         </nav>
+                            
+                            
+                            <nav class="main-menu navbar navbar-default navbar-blue" role="navigation">
+     <div class="container-fluid" id="navfluid">
+       <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+     <a class="navbar-brand" href="{{ path('_homepage')}}">BSL</a>
+    </div>
+<div class="collapse navbar-collapse" id="navigationbar" >
+<ul class="nav navbar-nav">
+   <li><a href="{{ path('_homepage')}}">Home</a></li>
+   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ path('com_homepage')}}">COMS<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ path('com_ips_square_suggest') }}">ips-square-suggest</a></li>
+            <li><a href="{{ path('com_ips_file_post') }}">ips-file-post</a></li>
+            <li><a href="{{ path('com_ips_untrusted_fuzzy_search') }}">ips-untrusted-fuzzy-search</a></li>
+          </ul>
+        </li>
+   {% endif %}
+
+</ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+                            
+                            
+                            
+                            
                     </div>
                     <div class="col-md-2 col-sm-2 col-xs-12">                           
                         <ul class="social-top">
@@ -60,9 +95,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="text-right visible-xs">
+           {#     <div class="text-right visible-xs">
                     <a href="#" id="mobile_menu"><span class="fa fa-bars"></span></a>
-                </div>
+                </div>#}
             </div>
         </div>
     </header> 
@@ -117,12 +152,14 @@
         
         {% block body %}{% endblock %}
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-        <script src="{{ asset('js/vendor/jquery-1.10.1.min.js') }}"></script>
+{#        <script src="{{ asset('js/bootstrap.js') }}"></script>#}
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{#        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+{#        <script src="{{ asset('js/vendor/jquery-1.10.1.min.js') }}"></script>#}
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{#        <script src="{{ asset('js/bootstrap.min.js') }}"></script>#}
         <script src="{{ asset('js/plugins.js') }}"></script>
         <script src="{{ asset('js/templatemo_custom.js') }}"></script> 
         {% block javascripts %}{% endblock %}

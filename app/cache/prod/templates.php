@@ -82,6 +82,8 @@
   'ComBundle:Default:index.html.twig' => '/opt/www/BSLWorkbench/src/ComBundle/Resources/views/Default/index.html.twig',
   'ComBundle:sqr:suggest.html.twig' => '/opt/www/BSLWorkbench/src/ComBundle/Resources/views/sqr/suggest.html.twig',
   'ComBundle:sqr:searchResult.html.twig' => '/opt/www/BSLWorkbench/src/ComBundle/Resources/views/sqr/searchResult.html.twig',
+  'ComBundle:com:filePost.html.twig' => '/opt/www/BSLWorkbench/src/ComBundle/Resources/views/com/filePost.html.twig',
+  'ComBundle:untrusted:fuzzySearch.html.twig' => '/opt/www/BSLWorkbench/src/ComBundle/Resources/views/untrusted/fuzzySearch.html.twig',
   'FOSUserBundle:ChangePassword:changePassword.html.twig' => '/opt/www/BSLWorkbench/vendor/friendsofsymfony/user-bundle/Resources/views/ChangePassword/changePassword.html.twig',
   'FOSUserBundle:ChangePassword:changePassword_content.html.twig' => '/opt/www/BSLWorkbench/vendor/friendsofsymfony/user-bundle/Resources/views/ChangePassword/changePassword_content.html.twig',
   'FOSUserBundle:Group:edit.html.twig' => '/opt/www/BSLWorkbench/vendor/friendsofsymfony/user-bundle/Resources/views/Group/edit.html.twig',

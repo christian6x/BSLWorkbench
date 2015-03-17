@@ -1,0 +1,10 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright(c) 1993-${date?date?string("yyyy")} Softax, ${user}., Wszelkie prawa zastrzeżone
+${licensePrefix}To oprogramowanie jest własnością i zawiera poufne technologie Softax.
+${licensePrefix}Posiadanie, użycie lub kopiowanie tego oprogramowania jest dozwolone
+${licensePrefix}jedynie na podstawie ważnej udzielonej pisemnie licencji Softax.
+<#if licenseLast??>
+${licenseLast}
+</#if>

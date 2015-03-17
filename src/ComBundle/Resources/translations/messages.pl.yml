@@ -3,4 +3,10 @@
 ---
 submit:
     suggest: Szukaj
+    context: Kontekst
+    comIpsFilePost: Dodaj
+    comIpsFuzzySearch: Szukaj
     
+    
+random:
+    comIpsFilePost: Losowy identyfikator pliku

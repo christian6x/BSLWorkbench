@@ -843,7 +843,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
     public function block_form_start($context, array $blocks = array())
     {
         // line 265
-        $context["method"] = strtoupper((isset($context["method"]) ? $context["method"] : null));
+        $context["method"] = twig_upper_filter($this->env, (isset($context["method"]) ? $context["method"] : null));
         // line 266
         if (twig_in_filter((isset($context["method"]) ? $context["method"] : null), array(0 => "GET", 1 => "POST"))) {
             // line 267
@@ -856,7 +856,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         echo "<form name=\"";
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
         echo "\" method=\"";
-        echo twig_escape_filter($this->env, strtolower((isset($context["form_method"]) ? $context["form_method"] : null)), "html", null, true);
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, (isset($context["form_method"]) ? $context["form_method"] : null)), "html", null, true);
         echo "\" action=\"";
         echo twig_escape_filter($this->env, (isset($context["action"]) ? $context["action"] : null), "html", null, true);
         echo "\"";

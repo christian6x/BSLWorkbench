@@ -3,9 +3,51 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/web/css/templatemo_style.css</file>
-            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/vendor/symfony/symfony/src/Symfony/Component/Config/Util/XmlUtils.php</file>
-            <file>file:/home/ksikora/NetBeansProjects/BSLWorkbench/vendor/symfony/symfony/src/Symfony/Component/Intl/Tests/Data/Bundle/Reader/Fixtures/json/en_Invalid.json</file>
+            <file>file:/opt/www/BSLWorkbench/src/AppBundle/Resources/views/base.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Resources/public/js/suggest.js</file>
+            <file>file:/opt/www/BSLWorkbench/app/bootstrap.php.cache</file>
+            <file>file:/opt/www/BSLWorkbench/web/config.php</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Form/ipsSquareSuggestType.php</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/config.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/autoload.php</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/routing.yml</file>
+            <file>file:/opt/www/BSLWorkbench/vendor/autoload.php</file>
+            <file>file:/opt/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views/layout.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/config_test.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/parameters.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/SymfonyRequirements.php</file>
+            <file>file:/opt/www/BSLWorkbench/web/css/bootstrap_bootstrap_1.css</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Utils/Xml.php</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Controller/IpsSquareSuggestController.php</file>
+            <file>file:/opt/www/BSLWorkbench/app/console</file>
+            <file>file:/opt/www/BSLWorkbench/app/AppCache.php</file>
+            <file>file:/opt/www/BSLWorkbench/web/app_dev.php</file>
+            <file>file:/opt/www/BSLWorkbench/web/css/templatemo_style.css</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Resources/config/routing.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/Resources/views/default/index.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Utils/Com.php</file>
+            <file>file:/opt/www/BSLWorkbench/app/AppKernel.php</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Resources/views/sqr/suggest.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/security.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/config_dev.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/config_prod.yml</file>
+            <file>file:/opt/www/BSLWorkbench/app/phpunit.xml.dist</file>
+            <file>file:/opt/www/BSLWorkbench/web/css/bootstrap.css</file>
+            <file>file:/opt/www/BSLWorkbench/app/Resources/views/base.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views/Form/bootstrap.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/app/Resources/FOSUserBundle/views/layout.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/app/check.php</file>
+            <file>file:/opt/www/BSLWorkbench/composer.json</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/routing_dev.yml</file>
+            <file>file:/opt/www/BSLWorkbench/web/css/bootstrap_form_2.css</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Resources/views/sqr/searchResult.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/src/.htaccess</file>
+            <file>file:/opt/www/BSLWorkbench/src/AppBundle/Resources/views/default/index.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/app/config/services.yml</file>
+            <file>file:/opt/www/BSLWorkbench/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views/Pagination/bootstrap.html.twig</file>
+            <file>file:/opt/www/BSLWorkbench/src/ComBundle/Controller/IpsSquareSearchController.php</file>
+            <file>file:/opt/www/BSLWorkbench/web/app.php</file>
         </group>
     </open-files>
 </project-private>

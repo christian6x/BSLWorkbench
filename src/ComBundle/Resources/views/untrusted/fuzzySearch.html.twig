@@ -1,0 +1,41 @@
+{# empty Twig template #}
+{% extends "AppBundle::base.html.twig" %}
+    {% block top_c %}
+        <div class="top-c">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h3 class="topc-title">ips-untrusted-fuzzy-search</h3>
+                            
+                            <form id="formFuzzySearch" action="#" method="POST" {{ form_enctype(form) }}>
+                            {# <form  action="{{ path('com_ips_square_search')}}" method="POST" {{ form_enctype(form) }}> #}
+                                {{ form_row(form._token) }}
+                              
+                                {{ form_rest(form) }}
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+                            
+    {% endblock %}
+    {% block mid_c %}
+        <div class="row">
+            <div class="col-md-1 col-lg-6 text-center">
+                    <div id="fuzzySearchResult"></div>
+            </div> 
+        </div>
+    {% endblock %}
+    {% block stylesheets %}
+        {% stylesheets '@ComBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% javascripts '@ComBundle/Resources/public/js/untrusted/*' output='js/compiled/untrusted.js' %}
+            <script>var path_to_controller = "{{ path('comUntrustedFuzzySearch') }}";</script>
+            <script type="text/javascript" src="{{ asset_url }}"/></script>
+        {% endjavascripts %}
+     
+    {% endblock %}
